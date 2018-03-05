@@ -57,7 +57,7 @@ ICBlock * copyBlockChain(uint8_t *sizeOutput){
 
     ICBlock * blockChainCopy;
     memcpy(blockChainCopy, blockChain, sizeof(blockChain));
-    size = currentSize;
+    *sizeOutput = currentSize;
     return blockChainCopy;
 }
 
