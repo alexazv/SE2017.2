@@ -3,7 +3,7 @@
  Author: Alexandre Azevedo
  */
 
-#include "BlockChain.h"
+#include "ICBlockChain.h"
 #include <time.h>
 #include <stdio.h>
 
@@ -12,7 +12,7 @@
 static ICBlock blockChain[BLOCKCHAIN_MAX_SIZE];
 static uint8_t currentSize=0;
 
-void BlockChainCreate(){
+void ICBlockChainCreate(){
 
     //reset blockChain
     memset(blockChain, 0, sizeof(blockChain));
@@ -31,7 +31,7 @@ void BlockChainCreate(){
     currentSize = 1;
 }
 
-ICBlock copyLastBlock(){
+ICBlock ICBlockChainGetLastBlock(){
 
     //returns null if chain has not yet been created
     if(currentSize == 0){
@@ -42,7 +42,7 @@ ICBlock copyLastBlock(){
     return blockChain[currentSize-1];
 }
 
-ICBlock copyBlock(uint8_t index){
+ICBlock ICBlockChainGetBlock(uint8_t index){
 
     //returns null if index is out of bounds
     if(index > currentSize-1 || index == 0){
@@ -53,7 +53,7 @@ ICBlock copyBlock(uint8_t index){
     return blockChain[index];
 }
 
-ICBlock * copyBlockChain(uint8_t *sizeOutput){
+ICBlock * ICBlockChainGetChain(uint8_t *sizeOutput){
 
     ICBlock * blockChainCopy;
     memcpy(blockChainCopy, blockChain, sizeof(blockChain));
@@ -61,7 +61,7 @@ ICBlock * copyBlockChain(uint8_t *sizeOutput){
     return blockChainCopy;
 }
 
-bool mineNewBlock(ICAddress sender, ICAddress receiver, int amount){
+bool ICBlockChainCreateBlock(ICAddress sender, ICAddress receiver, int amount){
 
     //stop if has reached max size
     if(currentSize+1 == BLOCKCHAIN_MAX_SIZE)
@@ -84,7 +84,7 @@ bool mineNewBlock(ICAddress sender, ICAddress receiver, int amount){
     return true;
 }
 
-void writeLog(){
+void ICBlockChainWriteLog(){
 
     char blockInfo[BLOCK_STR_SIZE];
     FILE *log = fopen("log.txt", "ab+"); //creates file if it doest not exist
@@ -116,7 +116,7 @@ void writeLog(){
     fclose(log);
 }
 
-bool checkBlockChainValidity(){
+bool ICBlockChainCheckValidity(){
     for(int i = 1; i < currentSize; i++){
         ICHash calculatedHash;
 
