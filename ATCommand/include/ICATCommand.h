@@ -14,7 +14,6 @@
 
 #define MAX_STRING_SIZE 30
 #define MAX_PARAMETERS_SIZE 8
-#define MAX_BUFFER_SIZE 30
 #define MAX_COMMANDS 30
 #define MAX_OP_SIZE 30
 
@@ -41,8 +40,6 @@ static Command * ICATCommandGetCommand(char *key);
 
 //Public
 void ICATCommandStart(void);
-void listCommands();
-
 int ICATCommandAddCommand(char * command, int (*callback)(uint8_t **data, uint8_t size),
                           uint8_t parameterNumber, uint8_t parameterType, ...);
 

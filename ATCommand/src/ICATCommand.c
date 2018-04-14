@@ -13,11 +13,11 @@
 #include <uart.h>
 #include "uart_driver.h"
 
-static uint8_t _buffer[MAX_BUFFER_SIZE];
+static uint8_t _buffer[MAX_STRING_SIZE];
 static uint8_t _bufferSize;
 
-static Command commandList[MAX_COMMANDS];
-static uint8_t commandListSize;
+static Command _commandList[MAX_COMMANDS];
+static uint8_t _commandListSize;
 
 static void ICATCommandParser(uint8_t data){
 
@@ -43,9 +43,9 @@ void ICATCommandStart(void){
 
 static Command * ICATCommandGetCommand(char *key){
 
-    for(int i = 0; i < commandListSize; i++)
-        if(strcmp(commandList[i].command, key) == 0)
-            return &commandList[i];
+    for(int i = 0; i < _commandListSize; i++)
+        if(strcmp(_commandList[i].command, key) == 0)
+            return &_commandList[i];
 
     return NULL;
 }
@@ -95,116 +95,113 @@ static int removeQuotes(char * src){
 
 static int ICATCommandInvoker(){
 
-    if(strcmp((char*)_buffer, "AT") == 0){
-        printk("STATUS OK\n");
-        return kOK;
-    }
-
-    char p[MAX_OP_SIZE];
+    char bufferSubString[MAX_OP_SIZE];
 
     int current_index = 0;
 
-    current_index = subStringUntilToken((char*)_buffer, p, current_index, '+');
+    current_index = subStringUntilToken((char*)_buffer, bufferSubString, current_index, '+');
 
-    if(current_index == -1 || strcmp(p, "AT") != 0) {
-        printk("ERROR: COMMANDS MUST BEGIN WITH \"AT\"\n");
-        return kFAIL;
+    if(current_index == -1){
+        if(strcmp(bufferSubString, "AT") == 0) {
+            printk("STATUS OK\n");
+            return kOK;
+        } else{
+            printk("ERROR: COMMANDS MUST BEGIN WITH \"AT\"\n");
+            return kFAIL;
+        }
+
     }
 
-    current_index = subStringUntilToken((char*)_buffer, p, current_index, '=');
+    current_index = subStringUntilToken((char*)_buffer, bufferSubString, current_index, '=');
 
-    printk("RECEIVED COMMAND = %s\n", p);
+    printk("RECEIVED COMMAND = %s\n", bufferSubString);
 
-    Command * command = ICATCommandGetCommand((char *) p); //change
+    Command * command = ICATCommandGetCommand((char *) bufferSubString); //change
 
     if (command == NULL) {
         printk("ERROR: COMMAND NOT FOUND\n");
         return kFAIL;
     }
 
-    printk("FOUND COMMAND = %s\n", command->command);
-
-    if(command->parameterNumber < 1){
-        return command->callback((uint8_t*)NULL, command->parameterNumber);
+    if(command->parameterNumber < 1 && current_index != -1){
+        printk("TOO MANY ARGUMENTS FOR COMMAND %s: EXPECTED %d\n",command->command, command->parameterNumber);
+        return kFAIL;
     }
 
-    uint8_t * parameters[MAX_PARAMETERS_SIZE];
+    printk("FOUND COMMAND = %s\n", command->command);
 
-    StringParameter parameters2[MAX_PARAMETERS_SIZE];
+    uint8_t * parameters[MAX_PARAMETERS_SIZE];
+    StringParameter stringParameters[MAX_PARAMETERS_SIZE];
     uint8_t intParameters[MAX_PARAMETERS_SIZE];
 
     uint8_t parameterCount = 0;
 
     for(int i = 0; i < command->parameterNumber; i++) {
 
+        current_index = subStringUntilToken((char *) _buffer, bufferSubString, current_index, ',');
+
+        if(current_index == -1 && i != command->parameterNumber-1){
+            printk("TOO FEW ARGUMENTS FOR COMMAND %s: EXPECTED %d\n",command->command, command->parameterNumber);
+            return kFAIL;
+        }
+
         switch(command->parameterTypes[i]) {
 
-            case INTEGER:
-                current_index = subStringUntilToken((char *) _buffer, p, current_index, ',');
+            case INTEGER:;
 
-                int value = atoi(p);
+                int value = atoi(bufferSubString);
 
                 if(value > 255){
 
                     intParameters[parameterCount] = (value & 0xff);
                     parameters[parameterCount] = &intParameters[parameterCount];
-                    printk("GOES THROUGH HERE\n");
 
                     parameterCount++;
 
                     intParameters[parameterCount] = (value >> 8);
                     parameters[parameterCount] = &intParameters[parameterCount];
-                    printk("AND HERE TOO\n");
                 } else {
                     intParameters[parameterCount] = (uint8_t)value;
                     parameters[parameterCount] = &intParameters[parameterCount];
                 }
-                printk("RECEIVED PARAMETER = %d\n", *parameters[parameterCount]);
+                //printk("RECEIVED PARAMETER = %d\n", *parameters[parameterCount]);
                 parameterCount++;
                 break;
 
             case STRING:
 
-                current_index = subStringUntilToken((char *) _buffer, parameters2[parameterCount].value, current_index, ',');
-
-                if (!removeQuotes(parameters2[parameterCount].value)) {
-                    printk("ERROR: STRING PARAMETER %s MUST BE ON QUOTES\n", parameters2[parameterCount].value);
+                if (!removeQuotes(bufferSubString)){
+                    printk("ERROR: STRING PARAMETER %s MUST BE ON QUOTES\n", stringParameters[parameterCount].value);
                     return kFAIL;
                 }
 
-                parameters[parameterCount] = (uint8_t *) parameters2[parameterCount].value;
+                strcpy(stringParameters[parameterCount].value, bufferSubString);
 
-                printk("RECEIVED PARAMETER = \"%s\"\n", (char *) parameters[parameterCount]);
+                parameters[parameterCount] = (uint8_t *) stringParameters[parameterCount].value;
+
+                //printk("RECEIVED PARAMETER = \"%s\"\n", (char *) parameters[parameterCount]);
                 parameterCount++;
                 break;
 
             default:
-                printk("VOID PARAMETER");
+                //printk("VOID PARAMETER");
                 break;
         }
+
+        //current_index = subStringUntilToken((char *) _buffer, bufferSubString, current_index, ',');
     }
 
-    printk("%d PARAMETERS PASSED\n", parameterCount);
+    if(current_index != -1){
+        printk("TOO MANY ARGUMENTS FOR COMMAND %s: EXPECTED %d\n",command->command, command->parameterNumber);
+        return kFAIL;
+    }
 
     return command->callback(parameters, parameterCount);
 }
 
-void listCommands(){
-    printk("{");
-    for(int i = 0; i < commandListSize; i++){
-        printk("[\n");
-        printk("%s\n", commandList[i].command);
-        for(int j = 0; j < commandList[i].parameterNumber; j++){
-            printk("%d\n", commandList[i].parameterTypes[j]);
-        }
-        printk("]\n");
-    }
-}
-
-
 int ICATCommandAddCommand(char * command, int (*callback)(uint8_t **data, uint8_t size),
                           uint8_t parameterNumber, uint8_t parameterType, ... ){
-    if(commandListSize == MAX_COMMANDS)
+    if(_commandListSize == MAX_COMMANDS)
         return kFAIL;
 
     uint8_t parameters[MAX_PARAMETERS_SIZE];
@@ -212,27 +209,25 @@ int ICATCommandAddCommand(char * command, int (*callback)(uint8_t **data, uint8_
     va_list ap;
     va_start(ap, parameterType);
     parameters[0] = parameterType;
-    printk("RECEIVED PARAMETER = %d\n", parameters[0]);
     for(int i = 1; i < parameterNumber; i++){
         int x = va_arg(ap,int);
         parameters[i] = x;
     }
     va_end(ap);
 
-    Command new_command; //= {command, callback, parameterNumber, parameters};
-    //strcpy(new_command.command, command);
+    Command new_command;
     new_command.command = command;
-    new_command.callback = callback;
     new_command.parameterNumber = parameterNumber;
+    new_command.callback = callback;
     memcpy(new_command.parameterTypes, parameters, sizeof(parameters));
 
-    commandList[commandListSize] = new_command;
-    for (int i = 0; i < parameterNumber; ++i) {
-        printk("RECEIVED PARAMETER TYPE = %d\n",  commandList[commandListSize].parameterTypes[i]);
-    }
+    _commandList[_commandListSize] = new_command;
+    /*for (int i = 0; i < parameterNumber; ++i) {
+        printk("RECEIVED PARAMETER TYPE = %d\n",  _commandList[_commandListSize].parameterTypes[i]);
+    }*/
 
-    printk("ADDED COMMAND: %s\n", commandList[commandListSize].command);
-    commandListSize++;
+    printk("ADDED COMMAND: %s\n", _commandList[_commandListSize].command);
+    _commandListSize++;
 
     return kOK;
 }
