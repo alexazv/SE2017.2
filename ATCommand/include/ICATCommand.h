@@ -13,7 +13,7 @@
 #define kFAIL 1
 
 #define MAX_STRING_SIZE 30
-#define MAX_PARAMETERS_SIZE 10
+#define MAX_PARAMETERS_SIZE 8
 #define MAX_BUFFER_SIZE 30
 #define MAX_COMMANDS 30
 #define MAX_OP_SIZE 30

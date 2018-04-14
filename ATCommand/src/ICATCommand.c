@@ -128,8 +128,12 @@ static int ICATCommandInvoker(){
         return command->callback((uint8_t*)NULL, command->parameterNumber);
     }
 
-    uint8_t * parameters[command->parameterNumber];
-    StringParameter parameters2[command->parameterNumber];
+    uint8_t * parameters[MAX_PARAMETERS_SIZE];
+
+    StringParameter parameters2[MAX_PARAMETERS_SIZE];
+    uint8_t intParameters[MAX_PARAMETERS_SIZE];
+
+    uint8_t parameterCount = 0;
 
     for(int i = 0; i < command->parameterNumber; i++) {
 
@@ -137,32 +141,52 @@ static int ICATCommandInvoker(){
 
             case INTEGER:
                 current_index = subStringUntilToken((char *) _buffer, p, current_index, ',');
-                parameters[i] = (uint8_t *) atoi(p);
 
-                printk("RECEIVED PARAMETER = %d\n", (int)parameters[i]);
+                int value = atoi(p);
+
+                if(value > 255){
+
+                    intParameters[parameterCount] = (value & 0xff);
+                    parameters[parameterCount] = &intParameters[parameterCount];
+                    printk("GOES THROUGH HERE\n");
+
+                    parameterCount++;
+
+                    intParameters[parameterCount] = (value >> 8);
+                    parameters[parameterCount] = &intParameters[parameterCount];
+                    printk("AND HERE TOO\n");
+                } else {
+                    intParameters[parameterCount] = (uint8_t)value;
+                    parameters[parameterCount] = &intParameters[parameterCount];
+                }
+                printk("RECEIVED PARAMETER = %d\n", *parameters[parameterCount]);
+                parameterCount++;
                 break;
 
             case STRING:
 
-                current_index = subStringUntilToken((char *) _buffer, parameters2[i].value, current_index, ',');
+                current_index = subStringUntilToken((char *) _buffer, parameters2[parameterCount].value, current_index, ',');
 
-                if (!removeQuotes(parameters2[i].value)) {
-                    printk("ERROR: STRING PARAMETER %s MUST BE ON QUOTES\n", parameters2[i].value);
+                if (!removeQuotes(parameters2[parameterCount].value)) {
+                    printk("ERROR: STRING PARAMETER %s MUST BE ON QUOTES\n", parameters2[parameterCount].value);
                     return kFAIL;
                 }
 
-                parameters[i] = (uint8_t *) parameters2[i].value;
+                parameters[parameterCount] = (uint8_t *) parameters2[parameterCount].value;
 
-                printk("RECEIVED PARAMETER = \"%s\"\n", (char *) parameters[i]);
+                printk("RECEIVED PARAMETER = \"%s\"\n", (char *) parameters[parameterCount]);
+                parameterCount++;
                 break;
 
             default:
-                printk("VOID PARAMETER: %d\n", command->parameterTypes[i]);
+                printk("VOID PARAMETER");
                 break;
         }
     }
 
-    return command->callback(parameters, command->parameterNumber);
+    printk("%d PARAMETERS PASSED\n", parameterCount);
+
+    return command->callback(parameters, parameterCount);
 }
 
 void listCommands(){
