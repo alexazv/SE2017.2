@@ -27,6 +27,7 @@ static void ICATCommandParser(uint8_t data){
         _buffer[_bufferSize] = data;
         _bufferSize++;
     } else {
+        printk("\n");
         _buffer[_bufferSize] = '\0';
         ICATCommandInvoker();
         _bufferSize = 0;
@@ -40,28 +41,6 @@ void ICATCommandStart(void){
     _bufferSize = 0;
 }
 
-//separate by delimiter ',' ignoring quotes
-static int separateByToken(char *string, const char delimiter){
-
-    int isOnQuotes = 0;
-    for(int i = 0; string[i] != '\0'; i++){
-        if(string[i] == '"')
-            isOnQuotes = !isOnQuotes;
-
-        if(!isOnQuotes) {
-            if (string[i] == delimiter) {
-                string[i] = '\0';
-            }
-        }
-    }
-
-    //TODO: still destroys the string, though
-    if(isOnQuotes)
-        return kFAIL;
-
-    return kOK;
-}
-
 static Command * ICATCommandGetCommand(char *key){
 
     for(int i = 0; i < commandListSize; i++)
@@ -71,33 +50,21 @@ static Command * ICATCommandGetCommand(char *key){
     return NULL;
 }
 
-//returns pointer to element after token
-//TODO: check safety
-static uint8_t * findNextToken(uint8_t * string, uint8_t token){
-    uint8_t *p = string;
-    int i;
-    for (i = 0; p[i] != token; i++);
-    p = &p[i+1];
-    return p;
-}
-
-static int nextIndexOf(uint8_t * string, int start, const char token){
-
-    int i = start;
-    for (;string[i] != token && string[i] != '\0'; i++);
-
-    if(string[i] == '\0')
-        return -1;
-
-    return i;
-
-}
-
 //copies substring from src to dst from index start until token is found or until string ends;
 // returns index of found token or -1 if not found;
 static int subStringUntilToken(char * src, char * dst, int startIndex, const char token){
-    int endIndex = startIndex;
-    for (;src[endIndex] != token && src[endIndex] != '\0'; endIndex++);
+    int endIndex;
+    int isOnQuotes = 0;
+    for (endIndex = startIndex; src[endIndex] != '\0'; endIndex++){
+        if(src[endIndex] == '\"')
+            isOnQuotes = !isOnQuotes;
+
+        if(!isOnQuotes) {
+            if (src[endIndex] == token) {
+                break;
+            }
+        }
+    }
 
     strncpy(dst, src+startIndex, (size_t)endIndex-startIndex);
     dst[endIndex-startIndex] = '\0';
@@ -105,8 +72,25 @@ static int subStringUntilToken(char * src, char * dst, int startIndex, const cha
     if(src[endIndex] == '\0')
         return -1;
 
-
     return endIndex+1;
+}
+
+//removes quotes from start and finish of function
+//returns 0 if cannot find quotes
+//returns 1 otherwise
+static int removeQuotes(char * src){
+
+    int size = strlen(src);
+
+    if(src[0] != '\"' || src[size-1] != '\"')
+        return 0;
+
+    //remove last quote
+    src[size-1] = '\0';
+    //shift string left by 1
+    memmove(src, src+1, (size-1)* sizeof(char));
+
+    return 1;
 }
 
 static int ICATCommandInvoker(){
@@ -122,13 +106,12 @@ static int ICATCommandInvoker(){
 
     current_index = subStringUntilToken((char*)_buffer, p, current_index, '+');
 
-    if(current_index == -1)
+    if(current_index == -1 || strcmp(p, "AT") != 0) {
+        printk("ERROR: COMMANDS MUST BEGIN WITH \"AT\"\n");
         return kFAIL;
+    }
 
     current_index = subStringUntilToken((char*)_buffer, p, current_index, '=');
-
-    if(current_index == -1)
-        return kFAIL;
 
     printk("RECEIVED COMMAND = %s\n", p);
 
@@ -142,50 +125,89 @@ static int ICATCommandInvoker(){
     printk("FOUND COMMAND = %s\n", command->command);
 
     if(command->parameterNumber < 1){
-        return command->callback(NULL, command->parameterNumber);
+        return command->callback((uint8_t*)NULL, command->parameterNumber);
     }
 
     uint8_t * parameters[command->parameterNumber];
+    StringParameter parameters2[command->parameterNumber];
 
     for(int i = 0; i < command->parameterNumber; i++) {
 
-        current_index = subStringUntilToken((char*)_buffer, p, current_index, ',');
+        switch(command->parameterTypes[i]) {
 
-        printk("RECEIVED PARAMETER = %s\n", p);
+            case INTEGER:
+                current_index = subStringUntilToken((char *) _buffer, p, current_index, ',');
+                parameters[i] = (uint8_t *) atoi(p);
 
-        if(command->parameterTypes[i] == INTEGER){
-            parameters[i] = (uint8_t*)atoi(p);
-            /*uint64_t base = 1;
-            uint64_t number = 0;
-            for(int i = 0; p[0] != '\0'; p++){
+                printk("RECEIVED PARAMETER = %d\n", (int)parameters[i]);
+                break;
 
-                if(p[0] < '0' || p[0] > '9')
+            case STRING:
+
+                current_index = subStringUntilToken((char *) _buffer, parameters2[i].value, current_index, ',');
+
+                if (!removeQuotes(parameters2[i].value)) {
+                    printk("ERROR: STRING PARAMETER %s MUST BE ON QUOTES\n", parameters2[i].value);
                     return kFAIL;
+                }
 
-                number += base*(p[0] - '0');
-                base *= 10;
-            }
-            parameters[i] = number;*/
-        }
-        else if(command->parameterTypes[i] == STRING){
-            parameters[i] = (uint8_t*)&p;
+                parameters[i] = (uint8_t *) parameters2[i].value;
+
+                printk("RECEIVED PARAMETER = \"%s\"\n", (char *) parameters[i]);
+                break;
+
+            default:
+                printk("VOID PARAMETER: %d\n", command->parameterTypes[i]);
+                break;
         }
     }
 
     return command->callback(parameters, command->parameterNumber);
+}
 
-    return 1;
-
+void listCommands(){
+    printk("{");
+    for(int i = 0; i < commandListSize; i++){
+        printk("[\n");
+        printk("%s\n", commandList[i].command);
+        for(int j = 0; j < commandList[i].parameterNumber; j++){
+            printk("%d\n", commandList[i].parameterTypes[j]);
+        }
+        printk("]\n");
+    }
 }
 
 
-int ICATCommandAddCommand(char * command, int (*callback)(uint8_t **data, uint8_t size), uint8_t parameterNumber, ParameterTypes * parameterTypes){
-    if(commandListSize == MAX_COMMANDS-1)
+int ICATCommandAddCommand(char * command, int (*callback)(uint8_t **data, uint8_t size),
+                          uint8_t parameterNumber, uint8_t parameterType, ... ){
+    if(commandListSize == MAX_COMMANDS)
         return kFAIL;
-    Command new_command = {command, callback, parameterNumber, NULL};
-    commandList[commandListSize] = new_command;
-    memcpy(commandList[commandListSize].parameterTypes, parameterTypes, sizeof(ParameterTypes)*parameterNumber);
 
+    uint8_t parameters[MAX_PARAMETERS_SIZE];
+
+    va_list ap;
+    va_start(ap, parameterType);
+    parameters[0] = parameterType;
+    printk("RECEIVED PARAMETER = %d\n", parameters[0]);
+    for(int i = 1; i < parameterNumber; i++){
+        int x = va_arg(ap,int);
+        parameters[i] = x;
+    }
+    va_end(ap);
+
+    Command new_command; //= {command, callback, parameterNumber, parameters};
+    //strcpy(new_command.command, command);
+    new_command.command = command;
+    new_command.callback = callback;
+    new_command.parameterNumber = parameterNumber;
+    memcpy(new_command.parameterTypes, parameters, sizeof(parameters));
+
+    commandList[commandListSize] = new_command;
+    for (int i = 0; i < parameterNumber; ++i) {
+        printk("RECEIVED PARAMETER TYPE = %d\n",  commandList[commandListSize].parameterTypes[i]);
+    }
+
+    printk("ADDED COMMAND: %s\n", commandList[commandListSize].command);
     commandListSize++;
 
     return kOK;
