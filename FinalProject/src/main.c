@@ -15,6 +15,7 @@
 #include "display.h"
 #include "button.h"
 #include "i2c_driver.h"
+#include "compass_direction.h"
 
 #define SCREEN_DURATION 300
 
@@ -48,6 +49,7 @@ void buttonA_pressed(struct device *gpiob, struct gpio_callback *cb,
     ce = BUTTON_A;
     event_changed = 1;
     k_wakeup(k_current_get());
+    clear_display();
     printk("Button A pressed\n");
 }
 
@@ -57,12 +59,13 @@ void buttonB_pressed(struct device *gpiob, struct gpio_callback *cb,
     ce = BUTTON_B;
     event_changed = 1;
     k_wakeup(k_current_get());
-    printk("Button B pressed %d\n", event_changed);
+    clear_display();
+    printk("Button B pressed\n");
 }
 
 void scrollText(){
     print_string_to_display("ECOM042.2017.2", SCREEN_DURATION);
-    k_sleep(15*SCREEN_DURATION);
+    k_sleep(17*SCREEN_DURATION);
 }
 
 void showTemperature(){
@@ -80,9 +83,11 @@ void show_accelerometer(){
 }
 
 void show_compass(){
-   uint8_t value = read_from_compass();
-   print_int_to_display(value, SCREEN_DURATION);
-   k_sleep(4*SCREEN_DURATION);
+   uint16_t data[3];
+   read_from_compass(data);
+   print_image_to_display(
+               direction_sprite(calculate_direction(data)));
+   k_sleep(300);
 }
 
 //placeholder
@@ -103,8 +108,8 @@ int main(){
     i2c_init();
 
 
-   static state_t cs = TEXT_DISPLAY;
-    //static state_t cs = THERMOMETER;
+   //static state_t cs = TEXT_DISPLAY;
+    static state_t cs = COMPASS;
 
     mstate_t machine[] = {{.state_name = "Text Display", .events = {BLUETOOTH, ACCELEROMETER}, .action = scrollText},
                           {.state_name = "Accelerometer", .events = {TEXT_DISPLAY, COMPASS}, .action = show_accelerometer},

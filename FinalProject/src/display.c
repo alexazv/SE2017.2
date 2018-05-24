@@ -46,3 +46,10 @@ void clear_display(){
     disp = mb_display_get();
     mb_display_stop(disp);
 }
+
+void print_image_to_display(const struct mb_image *img){
+    disp = mb_display_get();
+    mb_display_image(disp, MB_DISPLAY_MODE_SINGLE,
+                         K_SECONDS(1), img, 1);
+        //k_sleep(K_SECONDS(1));
+}

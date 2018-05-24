@@ -8,6 +8,6 @@ void i2c_init();
 
 uint8_t read_from_accelerometer();
 
-uint8_t read_from_compass();
+void read_from_compass(uint16_t *dst);
 
 #endif //I2C_FINALPROJECT_H
