@@ -14,6 +14,8 @@
 
 void print_string_to_display(const char * text, int ms_duration);
 
+void print_int_to_display(uint8_t number, int ms_duration);
+
 void print_double_to_display(double number, int ms_duration);
 
 void clear_display();
