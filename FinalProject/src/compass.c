@@ -58,6 +58,9 @@ direction_t calculate_direction(int16_t * data){
 
     double_t angle = x == 0? (y < 0 ? 90 : 0) : (atan(y/x)*180.0)/PI;
 
+    if(angle < 0)
+        angle = 360 + angle;
+
     if(angle >= 337.25 || angle < 22.5)
         return NORTH;
     else if(angle >= 292.5 && angle < 337.25)

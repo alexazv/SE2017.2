@@ -24,7 +24,7 @@ void print_int_to_display(uint8_t number, int ms_duration)
 
     char text[10];
 
-    snprintf(text, 50, "%d", number);
+    snprintf(text, 10, "%d", number);
 
     mb_display_print(disp, MB_DISPLAY_MODE_DEFAULT | MB_DISPLAY_FLAG_LOOP,
              K_MSEC(ms_duration), text);
@@ -36,7 +36,10 @@ void print_double_to_display(double number, int ms_duration)
 
     char text[10];
 
-    snprintf(text, 50, "%.2g", number);
+    //int success =
+            snprintf(text, 10, "%d", (int)number);
+
+    //printk("%d\n", success);
 
     mb_display_print(disp, MB_DISPLAY_MODE_DEFAULT | MB_DISPLAY_FLAG_LOOP,
              K_MSEC(ms_duration), text);

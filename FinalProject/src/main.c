@@ -71,7 +71,6 @@ void scrollText(){
 void showTemperature(){
 
     double temperature = get_temperature_as_double();
-
     print_double_to_display(temperature, SCREEN_DURATION);
     k_sleep(6*SCREEN_DURATION);
 }
