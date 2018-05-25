@@ -25,9 +25,10 @@ list(APPEND SOURCES
   "${PROJECT_SOURCE_DIR}/src/display.c"
   "${PROJECT_SOURCE_DIR}/src/thermometer.c"
    "${PROJECT_SOURCE_DIR}/src/button.c"
-   "${PROJECT_SOURCE_DIR}/src/i2c_driver.c"
+   #"${PROJECT_SOURCE_DIR}/src/i2c_driver.c"
     "${PROJECT_SOURCE_DIR}/src/i2c_util.c"
-    "${PROJECT_SOURCE_DIR}/src/compass_direction.c"
+"${PROJECT_SOURCE_DIR}/src/accelerometer.c"
+    "${PROJECT_SOURCE_DIR}/src/compass.c"
  )
 
 

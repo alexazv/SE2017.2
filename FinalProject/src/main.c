@@ -14,8 +14,8 @@
 #include "thermometer.h"
 #include "display.h"
 #include "button.h"
-#include "i2c_driver.h"
-#include "compass_direction.h"
+#include "compass.h"
+#include "accelerometer.h"
 
 #define SCREEN_DURATION 300
 
@@ -77,13 +77,14 @@ void showTemperature(){
 }
 
 void show_accelerometer(){
-   uint8_t value = read_from_accelerometer();
-   print_int_to_display(value, SCREEN_DURATION);
+   uint16_t data[3];
+   read_from_accelerometer(data);
+   print_int_to_display(data[0], SCREEN_DURATION);
    k_sleep(4*SCREEN_DURATION);
 }
 
 void show_compass(){
-   uint16_t data[3];
+   int16_t data[3];
    read_from_compass(data);
    print_image_to_display(
                direction_sprite(calculate_direction(data)));
@@ -105,11 +106,13 @@ int main(){
     button_A_set_callback(buttonA_pressed);
     button_B_set_callback(buttonB_pressed);
 
-    i2c_init();
+    compass_init();
+    accelerometer_init();
 
 
    //static state_t cs = TEXT_DISPLAY;
-    static state_t cs = COMPASS;
+    //static state_t cs = COMPASS;
+    static state_t cs = ACCELEROMETER;
 
     mstate_t machine[] = {{.state_name = "Text Display", .events = {BLUETOOTH, ACCELEROMETER}, .action = scrollText},
                           {.state_name = "Accelerometer", .events = {TEXT_DISPLAY, COMPASS}, .action = show_accelerometer},
@@ -132,3 +135,4 @@ int main(){
 
     return 0;
 }
+
