@@ -10,7 +10,7 @@
 void accelerometer_init();
 void accelerometer_standby();
 void accelerometer_active();
-void calculate(int16_t x, int16_t y, int16_t z);
+void calculate_tilt(int16_t x, int16_t y, int16_t z);
 void read_from_accelerometer(int16_t * dst);
 
 

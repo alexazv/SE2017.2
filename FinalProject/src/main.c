@@ -81,9 +81,9 @@ void showTemperature(){
 void show_accelerometer(){
    uint16_t data[3];
    read_from_accelerometer(data);
-   calculate(data[0], data[1], data[2]);
-   print_int_to_display(data[0], SCREEN_DURATION);
-   k_sleep(4*SCREEN_DURATION);
+   calculate_tilt(data[0], data[1], data[2]);
+   //print_int_to_display(data[0], SCREEN_DURATION);
+   k_sleep(SCREEN_DURATION);
 }
 
 void show_compass(){
@@ -91,7 +91,7 @@ void show_compass(){
    read_from_compass(data);
    print_image_to_display(
                direction_sprite(calculate_direction(data)));
-   k_sleep(300);
+   k_sleep(1000);
 }
 
 //placeholder
