@@ -64,8 +64,11 @@ void buttonB_pressed(struct device *gpiob, struct gpio_callback *cb,
 }
 
 void scrollText(){
-    print_string_to_display("ECOM042.2017.2", SCREEN_DURATION);
-    k_sleep(17*SCREEN_DURATION);
+    //print_string_to_display("ECOM042.2017.2", SCREEN_DURATION);
+    //k_sleep(17*SCREEN_DURATION);
+
+    print_string_to_display("AHN AHN FUCK THAT", SCREEN_DURATION);
+    k_sleep(30*SCREEN_DURATION);
 }
 
 void showTemperature(){
@@ -78,6 +81,7 @@ void showTemperature(){
 void show_accelerometer(){
    uint16_t data[3];
    read_from_accelerometer(data);
+   calculate(data[0], data[1], data[2]);
    print_int_to_display(data[0], SCREEN_DURATION);
    k_sleep(4*SCREEN_DURATION);
 }

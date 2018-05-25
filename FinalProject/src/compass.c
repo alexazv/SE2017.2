@@ -22,15 +22,15 @@ void configCompass(){
 
     //standby
     config = 0;
-    i2c_util_write_bytes(&compass, 0x10, config, sizeof(config));
+    i2c_util_write_bytes(&compass, 0x10, &config, sizeof(config));
 
     //continuous read
     config = config =  0x80;
-    i2c_util_write_bytes(&compass, 0x11, config, sizeof(config));
+    i2c_util_write_bytes(&compass, 0x11, &config, sizeof(config));
 
     //wake
     config = 0x01;
-    i2c_util_write_bytes(&compass, 0x10, config, sizeof(config));
+    i2c_util_write_bytes(&compass, 0x10, &config, sizeof(config));
 }
 
 //dst must have at least 3 bytes
