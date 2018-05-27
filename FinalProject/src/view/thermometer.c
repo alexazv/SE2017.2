@@ -10,12 +10,6 @@
 
 static struct device *thermometer;
 
-/**
- * @brief thermometer_get_temperature_as_double
- * Read current temperature in celsius from the thermometer device
- *
- * @return Temperature in celsius
- */
 double thermometer_get_temperature_as_double(void){
     thermometer = device_get_binding("TEMP_0");
     if (!thermometer) {

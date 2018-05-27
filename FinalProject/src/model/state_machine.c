@@ -34,10 +34,7 @@ void state_machine_change_state(event_t event){
     printk("State changed to: %s\n", machine[current_state].state_name);
 }
 
-/**
- * @brief scroll_Text
- * Shows "ECOM042.2017.2" scrolling in the display
- */
+
 void scroll_Text(void){
     print_string_to_display("ECOM042.2017.2", SCREEN_DURATION);
     k_sleep(17*SCREEN_DURATION);
@@ -51,10 +48,7 @@ void bluetooth(void){
     k_sleep(17*SCREEN_DURATION);
 }
 
-/**
- * @brief show_Temperature
- *Shows current temperature in Celsius on the display
- */
+
 void show_temperature(void){
 
     double temperature = thermometer_get_temperature_as_double();
@@ -62,6 +56,6 @@ void show_temperature(void){
     k_sleep(6*SCREEN_DURATION);
 }
 
-mstate_t * get_current_state(){
+mstate_t * get_current_state(void){
      return &machine[current_state];
 }

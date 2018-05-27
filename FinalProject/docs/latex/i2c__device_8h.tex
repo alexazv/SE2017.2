@@ -1,0 +1,139 @@
+\hypertarget{i2c__device_8h}{}\section{/home/alexandre/\+S\+E/\+S\+E2017.2/\+Final\+Project/include/i2c\+\_\+device.h File Reference}
+\label{i2c__device_8h}\index{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/i2c\+\_\+device.\+h@{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/i2c\+\_\+device.\+h}}
+{\ttfamily \#include \char`\"{}version.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}i2c\+\_\+util.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+Include dependency graph for i2c\+\_\+device.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{i2c__device_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{i2c__device_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{i2c__device_8h_a4987d8d30a75237baf8a7a13c03dffe8}{accelerometer\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em accelerometer\+\_\+init \end{DoxyCompactList}\item 
+void \hyperlink{i2c__device_8h_a9974dbc346f9bc063734b1024ef38186}{accelerometer\+\_\+standby} (void)
+\begin{DoxyCompactList}\small\item\em accelerometer\+\_\+standby \end{DoxyCompactList}\item 
+void \hyperlink{i2c__device_8h_ad2c3341a2e62d06966c10af71d4cc2ba}{accelerometer\+\_\+active} (void)
+\begin{DoxyCompactList}\small\item\em accelerometer\+\_\+active Change accelerometer device status to active \end{DoxyCompactList}\item 
+void \hyperlink{i2c__device_8h_a6b00d3dd6886413e8360d7f823dfd917}{read\+\_\+from\+\_\+accelerometer} (uint8\+\_\+t $\ast$data)
+\begin{DoxyCompactList}\small\item\em read\+\_\+from\+\_\+accelerometer Read the raw x, y and z values from the accelerometer device \end{DoxyCompactList}\item 
+void \hyperlink{i2c__device_8h_a8dec46d68222e3753f9e896cb89f2eff}{compass\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em compass\+\_\+init \end{DoxyCompactList}\item 
+void \hyperlink{i2c__device_8h_aedae8d7581a0a5c331739312b99501b6}{compass\+\_\+active} (void)
+\begin{DoxyCompactList}\small\item\em compass\+\_\+active \end{DoxyCompactList}\item 
+void \hyperlink{i2c__device_8h_affcdec32838de9a8c68ab57563800c3b}{compass\+\_\+standby} (void)
+\begin{DoxyCompactList}\small\item\em compass\+\_\+standby \end{DoxyCompactList}\item 
+void \hyperlink{i2c__device_8h_ad868676abc1544ced1e717918d810070}{read\+\_\+from\+\_\+compass} (uint8\+\_\+t $\ast$data)
+\begin{DoxyCompactList}\small\item\em read\+\_\+from\+\_\+compass Read the raw x, y and z values from the magnetometer device \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}!accelerometer\+\_\+active@{accelerometer\+\_\+active}}
+\index{accelerometer\+\_\+active@{accelerometer\+\_\+active}!i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}}
+\subsubsection[{\texorpdfstring{accelerometer\+\_\+active(void)}{accelerometer_active(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void accelerometer\+\_\+active (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{i2c__device_8h_ad2c3341a2e62d06966c10af71d4cc2ba}{}\label{i2c__device_8h_ad2c3341a2e62d06966c10af71d4cc2ba}
+
+
+accelerometer\+\_\+active Change accelerometer device status to active 
+
+\index{i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}!accelerometer\+\_\+init@{accelerometer\+\_\+init}}
+\index{accelerometer\+\_\+init@{accelerometer\+\_\+init}!i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}}
+\subsubsection[{\texorpdfstring{accelerometer\+\_\+init(void)}{accelerometer_init(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void accelerometer\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{i2c__device_8h_a4987d8d30a75237baf8a7a13c03dffe8}{}\label{i2c__device_8h_a4987d8d30a75237baf8a7a13c03dffe8}
+
+
+accelerometer\+\_\+init 
+
+Configure the accelerometer device for use \index{i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}!accelerometer\+\_\+standby@{accelerometer\+\_\+standby}}
+\index{accelerometer\+\_\+standby@{accelerometer\+\_\+standby}!i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}}
+\subsubsection[{\texorpdfstring{accelerometer\+\_\+standby(void)}{accelerometer_standby(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void accelerometer\+\_\+standby (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{i2c__device_8h_a9974dbc346f9bc063734b1024ef38186}{}\label{i2c__device_8h_a9974dbc346f9bc063734b1024ef38186}
+
+
+accelerometer\+\_\+standby 
+
+Change accelerometer device status to \char`\"{}standby\char`\"{} \index{i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}!compass\+\_\+active@{compass\+\_\+active}}
+\index{compass\+\_\+active@{compass\+\_\+active}!i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}}
+\subsubsection[{\texorpdfstring{compass\+\_\+active(void)}{compass_active(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void compass\+\_\+active (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{i2c__device_8h_aedae8d7581a0a5c331739312b99501b6}{}\label{i2c__device_8h_aedae8d7581a0a5c331739312b99501b6}
+
+
+compass\+\_\+active 
+
+Change magnometer device status to \char`\"{}active\char`\"{} \index{i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}!compass\+\_\+init@{compass\+\_\+init}}
+\index{compass\+\_\+init@{compass\+\_\+init}!i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}}
+\subsubsection[{\texorpdfstring{compass\+\_\+init(void)}{compass_init(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void compass\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{i2c__device_8h_a8dec46d68222e3753f9e896cb89f2eff}{}\label{i2c__device_8h_a8dec46d68222e3753f9e896cb89f2eff}
+
+
+compass\+\_\+init 
+
+Configure the magnetometer device for use \index{i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}!compass\+\_\+standby@{compass\+\_\+standby}}
+\index{compass\+\_\+standby@{compass\+\_\+standby}!i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}}
+\subsubsection[{\texorpdfstring{compass\+\_\+standby(void)}{compass_standby(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void compass\+\_\+standby (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{i2c__device_8h_affcdec32838de9a8c68ab57563800c3b}{}\label{i2c__device_8h_affcdec32838de9a8c68ab57563800c3b}
+
+
+compass\+\_\+standby 
+
+Change magnetometer device status to \char`\"{}standby\char`\"{} \index{i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}!read\+\_\+from\+\_\+accelerometer@{read\+\_\+from\+\_\+accelerometer}}
+\index{read\+\_\+from\+\_\+accelerometer@{read\+\_\+from\+\_\+accelerometer}!i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}}
+\subsubsection[{\texorpdfstring{read\+\_\+from\+\_\+accelerometer(uint8\+\_\+t $\ast$data)}{read_from_accelerometer(uint8_t *data)}}]{\setlength{\rightskip}{0pt plus 5cm}void read\+\_\+from\+\_\+accelerometer (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{i2c__device_8h_a6b00d3dd6886413e8360d7f823dfd917}{}\label{i2c__device_8h_a6b00d3dd6886413e8360d7f823dfd917}
+
+
+read\+\_\+from\+\_\+accelerometer Read the raw x, y and z values from the accelerometer device 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dst} & -\/ destination of the x, y, z data. \\
+\hline
+\end{DoxyParams}
+\index{i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}!read\+\_\+from\+\_\+compass@{read\+\_\+from\+\_\+compass}}
+\index{read\+\_\+from\+\_\+compass@{read\+\_\+from\+\_\+compass}!i2c\+\_\+device.\+h@{i2c\+\_\+device.\+h}}
+\subsubsection[{\texorpdfstring{read\+\_\+from\+\_\+compass(uint8\+\_\+t $\ast$data)}{read_from_compass(uint8_t *data)}}]{\setlength{\rightskip}{0pt plus 5cm}void read\+\_\+from\+\_\+compass (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{i2c__device_8h_ad868676abc1544ced1e717918d810070}{}\label{i2c__device_8h_ad868676abc1544ced1e717918d810070}
+
+
+read\+\_\+from\+\_\+compass Read the raw x, y and z values from the magnetometer device 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/ destination for the raw x, y, z data. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,127 @@
+\hypertarget{compass_8h}{}\section{/home/alexandre/\+S\+E/\+S\+E2017.2/\+Final\+Project/include/compass.h File Reference}
+\label{compass_8h}\index{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/compass.\+h@{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/compass.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}math.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}display.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$misc/printk.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}version.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}i2c\+\_\+util.\+h\char`\"{}}\\*
+Include dependency graph for compass.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{compass_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \hyperlink{unioncompass__raw__data}{compass\+\_\+raw\+\_\+data}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b}{direction\+\_\+t} \{ \\*
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bad0611de6f28d4a9c9eac959f5344698e}{N\+O\+R\+TH}, 
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bae9449e8683a8199dad36b07a63b2f523}{W\+E\+ST}, 
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba8ef5c0bce69283a9986011a63eea8a6b}{S\+O\+U\+TH}, 
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bab5b3793b961949c817c7c0d99c05dad7}{E\+A\+ST}, 
+\\*
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bac8aee466c121a3c3c942f58e1d8864d4}{N\+O\+R\+T\+H\+W\+E\+ST}, 
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba46b2b49ffff37706df1f1497d31a458c}{N\+O\+R\+T\+H\+T\+E\+A\+ST}, 
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba6aa90951b336be999de204e61dd366d4}{S\+O\+U\+T\+H\+W\+E\+ST}, 
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba16c2c7abfbd3bad3343b0dcaa858bb49}{S\+O\+U\+T\+H\+E\+A\+ST}, 
+\\*
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba605159e8a4c32319fd69b5d151369d93}{U\+N\+D\+E\+F\+I\+N\+ED}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b}{direction\+\_\+t} \hyperlink{compass_8h_aabffb9e361e4da72065bf5cb2b8e231e}{calculate\+\_\+direction} (\hyperlink{unioncompass__raw__data}{compass\+\_\+raw\+\_\+data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em calculate\+\_\+direction \end{DoxyCompactList}\item 
+struct mb\+\_\+display $\ast$ \hyperlink{compass_8h_a146211ca0118be8477f48c6232de7f1b}{compass\+\_\+direction\+\_\+sprite\+\_\+get} (\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b}{direction\+\_\+t} direction)
+\begin{DoxyCompactList}\small\item\em show\+\_\+compass Show direction of magnetic north on the display \end{DoxyCompactList}\item 
+void \hyperlink{compass_8h_ae937ab674d54bc076783f8206002be7f}{show\+\_\+compass} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\index{compass.\+h@{compass.\+h}!direction\+\_\+t@{direction\+\_\+t}}
+\index{direction\+\_\+t@{direction\+\_\+t}!compass.\+h@{compass.\+h}}
+\subsubsection[{\texorpdfstring{direction\+\_\+t}{direction_t}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf direction\+\_\+t}}\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b}{}\label{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\+O\+R\+TH@{N\+O\+R\+TH}!compass.\+h@{compass.\+h}}\index{compass.\+h@{compass.\+h}!N\+O\+R\+TH@{N\+O\+R\+TH}}\item[{\em 
+N\+O\+R\+TH\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bad0611de6f28d4a9c9eac959f5344698e}{}\label{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bad0611de6f28d4a9c9eac959f5344698e}
+}]\index{W\+E\+ST@{W\+E\+ST}!compass.\+h@{compass.\+h}}\index{compass.\+h@{compass.\+h}!W\+E\+ST@{W\+E\+ST}}\item[{\em 
+W\+E\+ST\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bae9449e8683a8199dad36b07a63b2f523}{}\label{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bae9449e8683a8199dad36b07a63b2f523}
+}]\index{S\+O\+U\+TH@{S\+O\+U\+TH}!compass.\+h@{compass.\+h}}\index{compass.\+h@{compass.\+h}!S\+O\+U\+TH@{S\+O\+U\+TH}}\item[{\em 
+S\+O\+U\+TH\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba8ef5c0bce69283a9986011a63eea8a6b}{}\label{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba8ef5c0bce69283a9986011a63eea8a6b}
+}]\index{E\+A\+ST@{E\+A\+ST}!compass.\+h@{compass.\+h}}\index{compass.\+h@{compass.\+h}!E\+A\+ST@{E\+A\+ST}}\item[{\em 
+E\+A\+ST\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bab5b3793b961949c817c7c0d99c05dad7}{}\label{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bab5b3793b961949c817c7c0d99c05dad7}
+}]\index{N\+O\+R\+T\+H\+W\+E\+ST@{N\+O\+R\+T\+H\+W\+E\+ST}!compass.\+h@{compass.\+h}}\index{compass.\+h@{compass.\+h}!N\+O\+R\+T\+H\+W\+E\+ST@{N\+O\+R\+T\+H\+W\+E\+ST}}\item[{\em 
+N\+O\+R\+T\+H\+W\+E\+ST\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bac8aee466c121a3c3c942f58e1d8864d4}{}\label{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6bac8aee466c121a3c3c942f58e1d8864d4}
+}]\index{N\+O\+R\+T\+H\+T\+E\+A\+ST@{N\+O\+R\+T\+H\+T\+E\+A\+ST}!compass.\+h@{compass.\+h}}\index{compass.\+h@{compass.\+h}!N\+O\+R\+T\+H\+T\+E\+A\+ST@{N\+O\+R\+T\+H\+T\+E\+A\+ST}}\item[{\em 
+N\+O\+R\+T\+H\+T\+E\+A\+ST\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba46b2b49ffff37706df1f1497d31a458c}{}\label{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba46b2b49ffff37706df1f1497d31a458c}
+}]\index{S\+O\+U\+T\+H\+W\+E\+ST@{S\+O\+U\+T\+H\+W\+E\+ST}!compass.\+h@{compass.\+h}}\index{compass.\+h@{compass.\+h}!S\+O\+U\+T\+H\+W\+E\+ST@{S\+O\+U\+T\+H\+W\+E\+ST}}\item[{\em 
+S\+O\+U\+T\+H\+W\+E\+ST\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba6aa90951b336be999de204e61dd366d4}{}\label{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba6aa90951b336be999de204e61dd366d4}
+}]\index{S\+O\+U\+T\+H\+E\+A\+ST@{S\+O\+U\+T\+H\+E\+A\+ST}!compass.\+h@{compass.\+h}}\index{compass.\+h@{compass.\+h}!S\+O\+U\+T\+H\+E\+A\+ST@{S\+O\+U\+T\+H\+E\+A\+ST}}\item[{\em 
+S\+O\+U\+T\+H\+E\+A\+ST\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba16c2c7abfbd3bad3343b0dcaa858bb49}{}\label{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba16c2c7abfbd3bad3343b0dcaa858bb49}
+}]\index{U\+N\+D\+E\+F\+I\+N\+ED@{U\+N\+D\+E\+F\+I\+N\+ED}!compass.\+h@{compass.\+h}}\index{compass.\+h@{compass.\+h}!U\+N\+D\+E\+F\+I\+N\+ED@{U\+N\+D\+E\+F\+I\+N\+ED}}\item[{\em 
+U\+N\+D\+E\+F\+I\+N\+ED\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba605159e8a4c32319fd69b5d151369d93}{}\label{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6ba605159e8a4c32319fd69b5d151369d93}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\index{compass.\+h@{compass.\+h}!calculate\+\_\+direction@{calculate\+\_\+direction}}
+\index{calculate\+\_\+direction@{calculate\+\_\+direction}!compass.\+h@{compass.\+h}}
+\subsubsection[{\texorpdfstring{calculate\+\_\+direction(compass\+\_\+raw\+\_\+data $\ast$data)}{calculate_direction(compass_raw_data *data)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf direction\+\_\+t} calculate\+\_\+direction (
+\begin{DoxyParamCaption}
+\item[{{\bf compass\+\_\+raw\+\_\+data} $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{compass_8h_aabffb9e361e4da72065bf5cb2b8e231e}{}\label{compass_8h_aabffb9e361e4da72065bf5cb2b8e231e}
+
+
+calculate\+\_\+direction 
+
+Calculate north direction based on raw magnetometer data
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Raw magnetometer data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated cardinal direction 
+\end{DoxyReturn}
+\index{compass.\+h@{compass.\+h}!compass\+\_\+direction\+\_\+sprite\+\_\+get@{compass\+\_\+direction\+\_\+sprite\+\_\+get}}
+\index{compass\+\_\+direction\+\_\+sprite\+\_\+get@{compass\+\_\+direction\+\_\+sprite\+\_\+get}!compass.\+h@{compass.\+h}}
+\subsubsection[{\texorpdfstring{compass\+\_\+direction\+\_\+sprite\+\_\+get(direction\+\_\+t direction)}{compass_direction_sprite_get(direction_t direction)}}]{\setlength{\rightskip}{0pt plus 5cm}struct mb\+\_\+display $\ast$ compass\+\_\+direction\+\_\+sprite\+\_\+get (
+\begin{DoxyParamCaption}
+\item[{{\bf direction\+\_\+t}}]{direction}
+\end{DoxyParamCaption}
+)}\hypertarget{compass_8h_a146211ca0118be8477f48c6232de7f1b}{}\label{compass_8h_a146211ca0118be8477f48c6232de7f1b}
+
+
+show\+\_\+compass Show direction of magnetic north on the display 
+
+compass\+\_\+direction\+\_\+sprite\+\_\+get Get the sprite for a cardinal direction to be shown on the display
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & Cardinal direction requested \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Sprite for the cardinal direction 
+\end{DoxyReturn}
+\index{compass.\+h@{compass.\+h}!show\+\_\+compass@{show\+\_\+compass}}
+\index{show\+\_\+compass@{show\+\_\+compass}!compass.\+h@{compass.\+h}}
+\subsubsection[{\texorpdfstring{show\+\_\+compass(void)}{show_compass(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void show\+\_\+compass (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{compass_8h_ae937ab674d54bc076783f8206002be7f}{}\label{compass_8h_ae937ab674d54bc076783f8206002be7f}

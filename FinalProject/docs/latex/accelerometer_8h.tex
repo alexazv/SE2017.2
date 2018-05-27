@@ -1,0 +1,92 @@
+\hypertarget{accelerometer_8h}{}\section{/home/alexandre/\+S\+E/\+S\+E2017.2/\+Final\+Project/include/accelerometer.h File Reference}
+\label{accelerometer_8h}\index{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/accelerometer.\+h@{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/accelerometer.\+h}}
+{\ttfamily \#include \char`\"{}version.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}i2c\+\_\+device.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}display.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+Include dependency graph for accelerometer.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{accelerometer_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \hyperlink{unionaccelerometer__raw__data}{accelerometer\+\_\+raw\+\_\+data}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{accelerometer_8h_a6b05da58a833afa44a56889c577f0507}{A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+E\+R\+\_\+H}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{accelerometer_8h_aacb1432c4efd6ac84ff60e84da89c3cb}{calculate\+\_\+tilt} (\hyperlink{unionaccelerometer__raw__data}{accelerometer\+\_\+raw\+\_\+data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em calculate\+\_\+tilt Calculate roll and pitch of the device in degrees based on raw values \end{DoxyCompactList}\item 
+void \hyperlink{accelerometer_8h_abdb57d2a6f27ead5805ff7956f699cc0}{show\+\_\+accelerometer} (void)
+\begin{DoxyCompactList}\small\item\em print\+\_\+tilt Show current tilt as a pixel on the display \end{DoxyCompactList}\item 
+static void \hyperlink{accelerometer_8h_ab18bf7ec3a3375958e1b46b43f872da7}{print\+\_\+tilt} (double\+\_\+t roll, double\+\_\+t pitch)
+\begin{DoxyCompactList}\small\item\em show\+\_\+accelerometer Show current tilt as a pixel on the display \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{accelerometer.\+h@{accelerometer.\+h}!A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+E\+R\+\_\+H@{A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+E\+R\+\_\+H}}
+\index{A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+E\+R\+\_\+H@{A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+E\+R\+\_\+H}!accelerometer.\+h@{accelerometer.\+h}}
+\subsubsection[{\texorpdfstring{A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+E\+R\+\_\+H}{ACCELEROMETER_H}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+E\+R\+\_\+H}\hypertarget{accelerometer_8h_a6b05da58a833afa44a56889c577f0507}{}\label{accelerometer_8h_a6b05da58a833afa44a56889c577f0507}
+
+
+\subsection{Function Documentation}
+\index{accelerometer.\+h@{accelerometer.\+h}!calculate\+\_\+tilt@{calculate\+\_\+tilt}}
+\index{calculate\+\_\+tilt@{calculate\+\_\+tilt}!accelerometer.\+h@{accelerometer.\+h}}
+\subsubsection[{\texorpdfstring{calculate\+\_\+tilt(accelerometer\+\_\+raw\+\_\+data $\ast$data)}{calculate_tilt(accelerometer_raw_data *data)}}]{\setlength{\rightskip}{0pt plus 5cm}static void calculate\+\_\+tilt (
+\begin{DoxyParamCaption}
+\item[{{\bf accelerometer\+\_\+raw\+\_\+data} $\ast$}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{accelerometer_8h_aacb1432c4efd6ac84ff60e84da89c3cb}{}\label{accelerometer_8h_aacb1432c4efd6ac84ff60e84da89c3cb}
+
+
+calculate\+\_\+tilt Calculate roll and pitch of the device in degrees based on raw values 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+raw} & -\/ raw x value \\
+\hline
+{\em y\+\_\+raw} & -\/ raw y value \\
+\hline
+{\em z\+\_\+raw} & -\/ raw z value \\
+\hline
+\end{DoxyParams}
+\index{accelerometer.\+h@{accelerometer.\+h}!print\+\_\+tilt@{print\+\_\+tilt}}
+\index{print\+\_\+tilt@{print\+\_\+tilt}!accelerometer.\+h@{accelerometer.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+tilt(double\+\_\+t roll, double\+\_\+t pitch)}{print_tilt(double_t roll, double_t pitch)}}]{\setlength{\rightskip}{0pt plus 5cm}static void print\+\_\+tilt (
+\begin{DoxyParamCaption}
+\item[{double\+\_\+t}]{roll, }
+\item[{double\+\_\+t}]{pitch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{accelerometer_8h_ab18bf7ec3a3375958e1b46b43f872da7}{}\label{accelerometer_8h_ab18bf7ec3a3375958e1b46b43f872da7}
+
+
+show\+\_\+accelerometer Show current tilt as a pixel on the display 
+
+\index{accelerometer.\+h@{accelerometer.\+h}!show\+\_\+accelerometer@{show\+\_\+accelerometer}}
+\index{show\+\_\+accelerometer@{show\+\_\+accelerometer}!accelerometer.\+h@{accelerometer.\+h}}
+\subsubsection[{\texorpdfstring{show\+\_\+accelerometer(void)}{show_accelerometer(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void show\+\_\+accelerometer (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{accelerometer_8h_abdb57d2a6f27ead5805ff7956f699cc0}{}\label{accelerometer_8h_abdb57d2a6f27ead5805ff7956f699cc0}
+
+
+print\+\_\+tilt Show current tilt as a pixel on the display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roll} & -\/ roll of device \\
+\hline
+{\em pitch} & -\/ pitch of the device \\
+\hline
+\end{DoxyParams}

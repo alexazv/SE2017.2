@@ -30,11 +30,38 @@ typedef union {
     uint8_t data_raw[6];
 } compass_raw_data;
 
+
+/**
+ * @brief calculate_direction
+ *
+ * Calculate north direction based on raw
+ * magnetometer data
+ *
+ * @param data
+ * Raw magnetometer data
+ *
+ * @return
+ * The calculated cardinal direction
+ */
 direction_t calculate_direction(compass_raw_data *data);
 
+/**
+ * @brief show_compass
+ * Show direction of magnetic north on the display
+ */
 struct mb_display * compass_direction_sprite_get(direction_t direction);
 
 void show_compass(void);
+
+/**
+ * @brief compass_direction_sprite_get
+ * Get the sprite for a cardinal direction to be shown on the display
+ * @param direction
+ * Cardinal direction requested
+ * @return
+ * Sprite for the cardinal direction
+ */
+struct mb_display * compass_direction_sprite_get(direction_t direction);
 
 #endif //COMPASS_FINALPROJECT_H
 

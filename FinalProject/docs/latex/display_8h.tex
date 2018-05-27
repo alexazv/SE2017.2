@@ -1,0 +1,133 @@
+\hypertarget{display_8h}{}\section{/home/alexandre/\+S\+E/\+S\+E2017.2/\+Final\+Project/include/display.h File Reference}
+\label{display_8h}\index{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/display.\+h@{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/display.\+h}}
+{\ttfamily \#include $<$zephyr.\+h$>$}\\*
+{\ttfamily \#include $<$misc/printk.\+h$>$}\\*
+{\ttfamily \#include $<$board.\+h$>$}\\*
+{\ttfamily \#include $<$gpio.\+h$>$}\\*
+{\ttfamily \#include $<$device.\+h$>$}\\*
+{\ttfamily \#include $<$display/mb\+\_\+display.\+h$>$}\\*
+Include dependency graph for display.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{display_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{display_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{display_8h_ae0cf4db10c902d16029c235d0cf28ca6}{S\+C\+R\+E\+E\+N\+\_\+\+D\+U\+R\+A\+T\+I\+ON}~300
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{display_8h_ab0ca066858a1f39e7a56c4da7da98543}{print\+\_\+string\+\_\+to\+\_\+display} (const char $\ast$text, int ms\+\_\+duration)
+\begin{DoxyCompactList}\small\item\em print\+\_\+string\+\_\+to\+\_\+display Scrolls text on the display \end{DoxyCompactList}\item 
+void \hyperlink{display_8h_a0df8f7e68561180aeedcc85a138b2f89}{print\+\_\+int\+\_\+to\+\_\+display} (uint8\+\_\+t number, int ms\+\_\+duration)
+\begin{DoxyCompactList}\small\item\em print\+\_\+int\+\_\+to\+\_\+display Scrolls a number on the screen \end{DoxyCompactList}\item 
+void \hyperlink{display_8h_a431d770d374d4520da751dfafbce7059}{print\+\_\+double\+\_\+to\+\_\+display} (double number, int ms\+\_\+duration)
+\begin{DoxyCompactList}\small\item\em print\+\_\+double\+\_\+to\+\_\+display Displays a floating-\/point number on the display \end{DoxyCompactList}\item 
+void \hyperlink{display_8h_aad5f1cc6c2f47c2a58c7749181a756a6}{print\+\_\+image\+\_\+to\+\_\+display} (const struct mb\+\_\+image $\ast$img)
+\begin{DoxyCompactList}\small\item\em print\+\_\+image\+\_\+to\+\_\+display Shows an image on the display for 1 second \end{DoxyCompactList}\item 
+void \hyperlink{display_8h_ac1486c1dea925018d24334240a13261e}{clear\+\_\+display} ()
+\begin{DoxyCompactList}\small\item\em clear\+\_\+display \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{display.\+h@{display.\+h}!S\+C\+R\+E\+E\+N\+\_\+\+D\+U\+R\+A\+T\+I\+ON@{S\+C\+R\+E\+E\+N\+\_\+\+D\+U\+R\+A\+T\+I\+ON}}
+\index{S\+C\+R\+E\+E\+N\+\_\+\+D\+U\+R\+A\+T\+I\+ON@{S\+C\+R\+E\+E\+N\+\_\+\+D\+U\+R\+A\+T\+I\+ON}!display.\+h@{display.\+h}}
+\subsubsection[{\texorpdfstring{S\+C\+R\+E\+E\+N\+\_\+\+D\+U\+R\+A\+T\+I\+ON}{SCREEN_DURATION}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+C\+R\+E\+E\+N\+\_\+\+D\+U\+R\+A\+T\+I\+ON~300}\hypertarget{display_8h_ae0cf4db10c902d16029c235d0cf28ca6}{}\label{display_8h_ae0cf4db10c902d16029c235d0cf28ca6}
+
+
+\subsection{Function Documentation}
+\index{display.\+h@{display.\+h}!clear\+\_\+display@{clear\+\_\+display}}
+\index{clear\+\_\+display@{clear\+\_\+display}!display.\+h@{display.\+h}}
+\subsubsection[{\texorpdfstring{clear\+\_\+display()}{clear_display()}}]{\setlength{\rightskip}{0pt plus 5cm}void clear\+\_\+display (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{display_8h_ac1486c1dea925018d24334240a13261e}{}\label{display_8h_ac1486c1dea925018d24334240a13261e}
+
+
+clear\+\_\+display 
+
+Resets the display \index{display.\+h@{display.\+h}!print\+\_\+double\+\_\+to\+\_\+display@{print\+\_\+double\+\_\+to\+\_\+display}}
+\index{print\+\_\+double\+\_\+to\+\_\+display@{print\+\_\+double\+\_\+to\+\_\+display}!display.\+h@{display.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+double\+\_\+to\+\_\+display(double number, int ms\+\_\+duration)}{print_double_to_display(double number, int ms_duration)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+double\+\_\+to\+\_\+display (
+\begin{DoxyParamCaption}
+\item[{double}]{number, }
+\item[{int}]{ms\+\_\+duration}
+\end{DoxyParamCaption}
+)}\hypertarget{display_8h_a431d770d374d4520da751dfafbce7059}{}\label{display_8h_a431d770d374d4520da751dfafbce7059}
+
+
+print\+\_\+double\+\_\+to\+\_\+display Displays a floating-\/point number on the display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & -\/ Double to be shown on display \\
+\hline
+{\em ms\+\_\+duration} & -\/ Duration of one character \\
+\hline
+\end{DoxyParams}
+\index{display.\+h@{display.\+h}!print\+\_\+image\+\_\+to\+\_\+display@{print\+\_\+image\+\_\+to\+\_\+display}}
+\index{print\+\_\+image\+\_\+to\+\_\+display@{print\+\_\+image\+\_\+to\+\_\+display}!display.\+h@{display.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+image\+\_\+to\+\_\+display(const struct mb\+\_\+image $\ast$img)}{print_image_to_display(const struct mb_image *img)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+image\+\_\+to\+\_\+display (
+\begin{DoxyParamCaption}
+\item[{const struct mb\+\_\+image $\ast$}]{img}
+\end{DoxyParamCaption}
+)}\hypertarget{display_8h_aad5f1cc6c2f47c2a58c7749181a756a6}{}\label{display_8h_aad5f1cc6c2f47c2a58c7749181a756a6}
+
+
+print\+\_\+image\+\_\+to\+\_\+display Shows an image on the display for 1 second 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & -\/ Image to be displayed \\
+\hline
+\end{DoxyParams}
+\index{display.\+h@{display.\+h}!print\+\_\+int\+\_\+to\+\_\+display@{print\+\_\+int\+\_\+to\+\_\+display}}
+\index{print\+\_\+int\+\_\+to\+\_\+display@{print\+\_\+int\+\_\+to\+\_\+display}!display.\+h@{display.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+int\+\_\+to\+\_\+display(uint8\+\_\+t number, int ms\+\_\+duration)}{print_int_to_display(uint8_t number, int ms_duration)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+int\+\_\+to\+\_\+display (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{number, }
+\item[{int}]{ms\+\_\+duration}
+\end{DoxyParamCaption}
+)}\hypertarget{display_8h_a0df8f7e68561180aeedcc85a138b2f89}{}\label{display_8h_a0df8f7e68561180aeedcc85a138b2f89}
+
+
+print\+\_\+int\+\_\+to\+\_\+display Scrolls a number on the screen 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & Integer to be shown on the display \\
+\hline
+{\em ms\+\_\+duration} & -\/ Duration of one character \\
+\hline
+\end{DoxyParams}
+\index{display.\+h@{display.\+h}!print\+\_\+string\+\_\+to\+\_\+display@{print\+\_\+string\+\_\+to\+\_\+display}}
+\index{print\+\_\+string\+\_\+to\+\_\+display@{print\+\_\+string\+\_\+to\+\_\+display}!display.\+h@{display.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+string\+\_\+to\+\_\+display(const char $\ast$text, int ms\+\_\+duration)}{print_string_to_display(const char *text, int ms_duration)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+string\+\_\+to\+\_\+display (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{text, }
+\item[{int}]{ms\+\_\+duration}
+\end{DoxyParamCaption}
+)}\hypertarget{display_8h_ab0ca066858a1f39e7a56c4da7da98543}{}\label{display_8h_ab0ca066858a1f39e7a56c4da7da98543}
+
+
+print\+\_\+string\+\_\+to\+\_\+display Scrolls text on the display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & -\/ Text to be shown \\
+\hline
+{\em ms\+\_\+duration} & -\/ Duration of one character \\
+\hline
+\end{DoxyParams}

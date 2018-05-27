@@ -1,0 +1,101 @@
+\hypertarget{button_8h}{}\section{/home/alexandre/\+S\+E/\+S\+E2017.2/\+Final\+Project/include/button.h File Reference}
+\label{button_8h}\index{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/button.\+h@{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/button.\+h}}
+{\ttfamily \#include $<$zephyr.\+h$>$}\\*
+{\ttfamily \#include $<$board.\+h$>$}\\*
+{\ttfamily \#include $<$device.\+h$>$}\\*
+{\ttfamily \#include $<$gpio.\+h$>$}\\*
+{\ttfamily \#include $<$misc/util.\+h$>$}\\*
+{\ttfamily \#include $<$misc/printk.\+h$>$}\\*
+Include dependency graph for button.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{button_8h_a4f41aabd288a68e43ce55ed0da4a9d9e}{E\+D\+G\+E0}~(G\+P\+I\+O\+\_\+\+I\+N\+T\+\_\+\+E\+D\+GE $\vert$ G\+P\+I\+O\+\_\+\+I\+N\+T\+\_\+\+A\+C\+T\+I\+V\+E\+\_\+\+L\+OW)
+\item 
+\#define \hyperlink{button_8h_a6219915dce04c118e709cb9b42995ace}{P\+U\+L\+L\+\_\+\+U\+P0}~0
+\item 
+\#define \hyperlink{button_8h_a7af108eb6da3fc4e6000d9a72a20090c}{E\+D\+G\+E1}~(G\+P\+I\+O\+\_\+\+I\+N\+T\+\_\+\+E\+D\+GE $\vert$ G\+P\+I\+O\+\_\+\+I\+N\+T\+\_\+\+A\+C\+T\+I\+V\+E\+\_\+\+L\+OW)
+\item 
+\#define \hyperlink{button_8h_af68bd9faf51a6ed2f123394d203c1609}{P\+U\+L\+L\+\_\+\+U\+P1}~0
+\item 
+\#define \hyperlink{button_8h_abe0b7b2a0ec4b64b92585808a051e1fa}{S\+L\+E\+E\+P\+\_\+\+T\+I\+ME}~500
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{button_8h_aa3c093a39a523c665a32edd75551c4ec}{button\+\_\+\+A\+\_\+set\+\_\+callback} (gpio\+\_\+callback\+\_\+handler\+\_\+t callback)
+\begin{DoxyCompactList}\small\item\em button\+\_\+\+B\+\_\+set\+\_\+callback Sets a I\+SR to be called when button B is triggered \end{DoxyCompactList}\item 
+void \hyperlink{button_8h_a6fd11c2b2f170bd2f39bdcd58b3c8093}{button\+\_\+\+B\+\_\+set\+\_\+callback} (gpio\+\_\+callback\+\_\+handler\+\_\+t callback)
+\begin{DoxyCompactList}\small\item\em button\+\_\+\+A\+\_\+set\+\_\+callback Sets a I\+SR to be called when button A is triggered \end{DoxyCompactList}\item 
+void \hyperlink{button_8h_a64a0f16b645b1f5205cbc27a267f8e63}{button\+\_\+configure\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em button\+\_\+configure\+\_\+init Configure ports for buttons A and B \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{button.\+h@{button.\+h}!E\+D\+G\+E0@{E\+D\+G\+E0}}
+\index{E\+D\+G\+E0@{E\+D\+G\+E0}!button.\+h@{button.\+h}}
+\subsubsection[{\texorpdfstring{E\+D\+G\+E0}{EDGE0}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+D\+G\+E0~(G\+P\+I\+O\+\_\+\+I\+N\+T\+\_\+\+E\+D\+GE $\vert$ G\+P\+I\+O\+\_\+\+I\+N\+T\+\_\+\+A\+C\+T\+I\+V\+E\+\_\+\+L\+OW)}\hypertarget{button_8h_a4f41aabd288a68e43ce55ed0da4a9d9e}{}\label{button_8h_a4f41aabd288a68e43ce55ed0da4a9d9e}
+\index{button.\+h@{button.\+h}!E\+D\+G\+E1@{E\+D\+G\+E1}}
+\index{E\+D\+G\+E1@{E\+D\+G\+E1}!button.\+h@{button.\+h}}
+\subsubsection[{\texorpdfstring{E\+D\+G\+E1}{EDGE1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+D\+G\+E1~(G\+P\+I\+O\+\_\+\+I\+N\+T\+\_\+\+E\+D\+GE $\vert$ G\+P\+I\+O\+\_\+\+I\+N\+T\+\_\+\+A\+C\+T\+I\+V\+E\+\_\+\+L\+OW)}\hypertarget{button_8h_a7af108eb6da3fc4e6000d9a72a20090c}{}\label{button_8h_a7af108eb6da3fc4e6000d9a72a20090c}
+\index{button.\+h@{button.\+h}!P\+U\+L\+L\+\_\+\+U\+P0@{P\+U\+L\+L\+\_\+\+U\+P0}}
+\index{P\+U\+L\+L\+\_\+\+U\+P0@{P\+U\+L\+L\+\_\+\+U\+P0}!button.\+h@{button.\+h}}
+\subsubsection[{\texorpdfstring{P\+U\+L\+L\+\_\+\+U\+P0}{PULL_UP0}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+U\+L\+L\+\_\+\+U\+P0~0}\hypertarget{button_8h_a6219915dce04c118e709cb9b42995ace}{}\label{button_8h_a6219915dce04c118e709cb9b42995ace}
+\index{button.\+h@{button.\+h}!P\+U\+L\+L\+\_\+\+U\+P1@{P\+U\+L\+L\+\_\+\+U\+P1}}
+\index{P\+U\+L\+L\+\_\+\+U\+P1@{P\+U\+L\+L\+\_\+\+U\+P1}!button.\+h@{button.\+h}}
+\subsubsection[{\texorpdfstring{P\+U\+L\+L\+\_\+\+U\+P1}{PULL_UP1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+U\+L\+L\+\_\+\+U\+P1~0}\hypertarget{button_8h_af68bd9faf51a6ed2f123394d203c1609}{}\label{button_8h_af68bd9faf51a6ed2f123394d203c1609}
+\index{button.\+h@{button.\+h}!S\+L\+E\+E\+P\+\_\+\+T\+I\+ME@{S\+L\+E\+E\+P\+\_\+\+T\+I\+ME}}
+\index{S\+L\+E\+E\+P\+\_\+\+T\+I\+ME@{S\+L\+E\+E\+P\+\_\+\+T\+I\+ME}!button.\+h@{button.\+h}}
+\subsubsection[{\texorpdfstring{S\+L\+E\+E\+P\+\_\+\+T\+I\+ME}{SLEEP_TIME}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+L\+E\+E\+P\+\_\+\+T\+I\+ME~500}\hypertarget{button_8h_abe0b7b2a0ec4b64b92585808a051e1fa}{}\label{button_8h_abe0b7b2a0ec4b64b92585808a051e1fa}
+
+
+\subsection{Function Documentation}
+\index{button.\+h@{button.\+h}!button\+\_\+\+A\+\_\+set\+\_\+callback@{button\+\_\+\+A\+\_\+set\+\_\+callback}}
+\index{button\+\_\+\+A\+\_\+set\+\_\+callback@{button\+\_\+\+A\+\_\+set\+\_\+callback}!button.\+h@{button.\+h}}
+\subsubsection[{\texorpdfstring{button\+\_\+\+A\+\_\+set\+\_\+callback(gpio\+\_\+callback\+\_\+handler\+\_\+t callback)}{button_A_set_callback(gpio_callback_handler_t callback)}}]{\setlength{\rightskip}{0pt plus 5cm}void button\+\_\+\+A\+\_\+set\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{gpio\+\_\+callback\+\_\+handler\+\_\+t}]{callback}
+\end{DoxyParamCaption}
+)}\hypertarget{button_8h_aa3c093a39a523c665a32edd75551c4ec}{}\label{button_8h_aa3c093a39a523c665a32edd75551c4ec}
+
+
+button\+\_\+\+B\+\_\+set\+\_\+callback Sets a I\+SR to be called when button B is triggered 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & -\/ I\+SR to be called \\
+\hline
+\end{DoxyParams}
+\index{button.\+h@{button.\+h}!button\+\_\+\+B\+\_\+set\+\_\+callback@{button\+\_\+\+B\+\_\+set\+\_\+callback}}
+\index{button\+\_\+\+B\+\_\+set\+\_\+callback@{button\+\_\+\+B\+\_\+set\+\_\+callback}!button.\+h@{button.\+h}}
+\subsubsection[{\texorpdfstring{button\+\_\+\+B\+\_\+set\+\_\+callback(gpio\+\_\+callback\+\_\+handler\+\_\+t callback)}{button_B_set_callback(gpio_callback_handler_t callback)}}]{\setlength{\rightskip}{0pt plus 5cm}void button\+\_\+\+B\+\_\+set\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{gpio\+\_\+callback\+\_\+handler\+\_\+t}]{callback}
+\end{DoxyParamCaption}
+)}\hypertarget{button_8h_a6fd11c2b2f170bd2f39bdcd58b3c8093}{}\label{button_8h_a6fd11c2b2f170bd2f39bdcd58b3c8093}
+
+
+button\+\_\+\+A\+\_\+set\+\_\+callback Sets a I\+SR to be called when button A is triggered 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & -\/ I\+SR to be called \\
+\hline
+\end{DoxyParams}
+\index{button.\+h@{button.\+h}!button\+\_\+configure\+\_\+init@{button\+\_\+configure\+\_\+init}}
+\index{button\+\_\+configure\+\_\+init@{button\+\_\+configure\+\_\+init}!button.\+h@{button.\+h}}
+\subsubsection[{\texorpdfstring{button\+\_\+configure\+\_\+init(void)}{button_configure_init(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void button\+\_\+configure\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{button_8h_a64a0f16b645b1f5205cbc27a267f8e63}{}\label{button_8h_a64a0f16b645b1f5205cbc27a267f8e63}
+
+
+button\+\_\+configure\+\_\+init Configure ports for buttons A and B 
+

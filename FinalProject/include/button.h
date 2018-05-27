@@ -81,10 +81,25 @@
 /* Sleep time */
 #define SLEEP_TIME	500
 
+/**
+ * @brief button_B_set_callback
+ * Sets a ISR to be called when button B is triggered
+ * @param callback - ISR to be called
+ */
 void button_A_set_callback(gpio_callback_handler_t callback);
 
+/**
+ * @brief button_A_set_callback
+ * Sets a ISR to be called when button A is triggered
+ * @param callback - ISR to be called
+ */
 void button_B_set_callback(gpio_callback_handler_t callback);
 
+/**
+ * @brief button_configure_init
+ * Configure ports for buttons A and B
+ *
+ */
 void button_configure_init(void);
 
 

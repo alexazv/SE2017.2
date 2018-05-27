@@ -1,0 +1,139 @@
+\hypertarget{state__machine_8h}{}\section{/home/alexandre/\+S\+E/\+S\+E2017.2/\+Final\+Project/include/state\+\_\+machine.h File Reference}
+\label{state__machine_8h}\index{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/state\+\_\+machine.\+h@{/home/alexandre/\+S\+E/\+S\+E2017.\+2/\+Final\+Project/include/state\+\_\+machine.\+h}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmstate__t}{mstate\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum  \{ ... \}  \hyperlink{state__machine_8h_a6510e8c53c4052a33b1073f32821cdd3}{event\+\_\+t}
+\begin{DoxyCompactList}\small\item\em event\+\_\+t Enum of triggerable events \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t} \{ \\*
+\hyperlink{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248a5c1177d066ef87bb2901278d1d1f76f8}{T\+E\+X\+T\+\_\+\+D\+I\+S\+P\+L\+AY}, 
+\hyperlink{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248a227f5dfe4607bb6c220798f2f318f73d}{A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+ER}, 
+\hyperlink{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248a3816a21235046441a516c9435b144aee}{C\+O\+M\+P\+A\+SS}, 
+\hyperlink{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248ad29db38aeccaf1d78edb295a0f402fe1}{T\+H\+E\+R\+M\+O\+M\+E\+T\+ER}, 
+\\*
+\hyperlink{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248acf9d75f7b1a34d02c9d810281f51cf2a}{B\+L\+U\+E\+T\+O\+O\+TH}
+ \}
+\item 
+enum \{ \hyperlink{state__machine_8h_a99fb83031ce9923c84392b4e92f956b5a0d56a81c8a754989f46db0d1ca6ca16e}{B\+U\+T\+T\+O\+N\+\_\+A}, 
+\hyperlink{state__machine_8h_a99fb83031ce9923c84392b4e92f956b5a8ffa84a83c0c23197c288f9c492dac40}{B\+U\+T\+T\+O\+N\+\_\+B}
+ \}\begin{DoxyCompactList}\small\item\em event\+\_\+t Enum of triggerable events \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{state__machine_8h_af0500e1eccc31b02cf60d7402e346cd2}{state\+\_\+machine\+\_\+change\+\_\+state} (\hyperlink{state__machine_8h_a6510e8c53c4052a33b1073f32821cdd3}{event\+\_\+t} event)
+\begin{DoxyCompactList}\small\item\em scroll\+\_\+\+Text Shows \char`\"{}\+E\+C\+O\+M042.\+2017.\+2\char`\"{} scrolling in the display \end{DoxyCompactList}\item 
+void \hyperlink{state__machine_8h_a6c15ed9ec59e864ffee5d50c5f1b9118}{scroll\+\_\+\+Text} (void)
+\item 
+static void \hyperlink{state__machine_8h_a6e254a25748734edf2fcc84d12d4f390}{bluetooth} (void)
+\item 
+void \hyperlink{state__machine_8h_a5fd9d0df63f9fc4e4f9392fcaa45f67b}{show\+\_\+temperature} (void)
+\begin{DoxyCompactList}\small\item\em Shows current temperature in Celsius on the display. \end{DoxyCompactList}\item 
+\hyperlink{structmstate__t}{mstate\+\_\+t} $\ast$ \hyperlink{state__machine_8h_a1e64df2eeaa6bb5823b5723a8feaa341}{get\+\_\+current\+\_\+state} (void)
+\begin{DoxyCompactList}\small\item\em get\+\_\+current\+\_\+state Get the current machine state from the state machine \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!event\+\_\+t@{event\+\_\+t}}
+\index{event\+\_\+t@{event\+\_\+t}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}
+\subsubsection[{\texorpdfstring{event\+\_\+t}{event_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef \{ ... \}   {\bf event\+\_\+t}}\hypertarget{state__machine_8h_a6510e8c53c4052a33b1073f32821cdd3}{}\label{state__machine_8h_a6510e8c53c4052a33b1073f32821cdd3}
+
+
+event\+\_\+t Enum of triggerable events 
+
+/$\ast$$\ast$ $\ast$/$\ast$$\ast$ 
+
+\subsection{Enumeration Type Documentation}
+\subsubsection[{\texorpdfstring{anonymous enum}{anonymous enum}}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}\hypertarget{state__machine_8h_a99fb83031ce9923c84392b4e92f956b5}{}\label{state__machine_8h_a99fb83031ce9923c84392b4e92f956b5}
+
+
+event\+\_\+t Enum of triggerable events 
+
+/$\ast$$\ast$ $\ast$/$\ast$$\ast$ \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{B\+U\+T\+T\+O\+N\+\_\+A@{B\+U\+T\+T\+O\+N\+\_\+A}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!B\+U\+T\+T\+O\+N\+\_\+A@{B\+U\+T\+T\+O\+N\+\_\+A}}\item[{\em 
+B\+U\+T\+T\+O\+N\+\_\+A\hypertarget{state__machine_8h_a99fb83031ce9923c84392b4e92f956b5a0d56a81c8a754989f46db0d1ca6ca16e}{}\label{state__machine_8h_a99fb83031ce9923c84392b4e92f956b5a0d56a81c8a754989f46db0d1ca6ca16e}
+}]\index{B\+U\+T\+T\+O\+N\+\_\+B@{B\+U\+T\+T\+O\+N\+\_\+B}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!B\+U\+T\+T\+O\+N\+\_\+B@{B\+U\+T\+T\+O\+N\+\_\+B}}\item[{\em 
+B\+U\+T\+T\+O\+N\+\_\+B\hypertarget{state__machine_8h_a99fb83031ce9923c84392b4e92f956b5a8ffa84a83c0c23197c288f9c492dac40}{}\label{state__machine_8h_a99fb83031ce9923c84392b4e92f956b5a8ffa84a83c0c23197c288f9c492dac40}
+}]\end{description}
+\end{Desc}
+\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!state\+\_\+t@{state\+\_\+t}}
+\index{state\+\_\+t@{state\+\_\+t}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+t}{state_t}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf state\+\_\+t}}\hypertarget{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248}{}\label{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{T\+E\+X\+T\+\_\+\+D\+I\+S\+P\+L\+AY@{T\+E\+X\+T\+\_\+\+D\+I\+S\+P\+L\+AY}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!T\+E\+X\+T\+\_\+\+D\+I\+S\+P\+L\+AY@{T\+E\+X\+T\+\_\+\+D\+I\+S\+P\+L\+AY}}\item[{\em 
+T\+E\+X\+T\+\_\+\+D\+I\+S\+P\+L\+AY\hypertarget{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248a5c1177d066ef87bb2901278d1d1f76f8}{}\label{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248a5c1177d066ef87bb2901278d1d1f76f8}
+}]\index{A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+ER@{A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+ER}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+ER@{A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+ER}}\item[{\em 
+A\+C\+C\+E\+L\+E\+R\+O\+M\+E\+T\+ER\hypertarget{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248a227f5dfe4607bb6c220798f2f318f73d}{}\label{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248a227f5dfe4607bb6c220798f2f318f73d}
+}]\index{C\+O\+M\+P\+A\+SS@{C\+O\+M\+P\+A\+SS}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!C\+O\+M\+P\+A\+SS@{C\+O\+M\+P\+A\+SS}}\item[{\em 
+C\+O\+M\+P\+A\+SS\hypertarget{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248a3816a21235046441a516c9435b144aee}{}\label{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248a3816a21235046441a516c9435b144aee}
+}]\index{T\+H\+E\+R\+M\+O\+M\+E\+T\+ER@{T\+H\+E\+R\+M\+O\+M\+E\+T\+ER}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!T\+H\+E\+R\+M\+O\+M\+E\+T\+ER@{T\+H\+E\+R\+M\+O\+M\+E\+T\+ER}}\item[{\em 
+T\+H\+E\+R\+M\+O\+M\+E\+T\+ER\hypertarget{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248ad29db38aeccaf1d78edb295a0f402fe1}{}\label{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248ad29db38aeccaf1d78edb295a0f402fe1}
+}]\index{B\+L\+U\+E\+T\+O\+O\+TH@{B\+L\+U\+E\+T\+O\+O\+TH}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!B\+L\+U\+E\+T\+O\+O\+TH@{B\+L\+U\+E\+T\+O\+O\+TH}}\item[{\em 
+B\+L\+U\+E\+T\+O\+O\+TH\hypertarget{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248acf9d75f7b1a34d02c9d810281f51cf2a}{}\label{state__machine_8h_aa0aafed44fec19806d8f9ad834be1248acf9d75f7b1a34d02c9d810281f51cf2a}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!bluetooth@{bluetooth}}
+\index{bluetooth@{bluetooth}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}
+\subsubsection[{\texorpdfstring{bluetooth(void)}{bluetooth(void)}}]{\setlength{\rightskip}{0pt plus 5cm}static void bluetooth (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{state__machine_8h_a6e254a25748734edf2fcc84d12d4f390}{}\label{state__machine_8h_a6e254a25748734edf2fcc84d12d4f390}
+\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!get\+\_\+current\+\_\+state@{get\+\_\+current\+\_\+state}}
+\index{get\+\_\+current\+\_\+state@{get\+\_\+current\+\_\+state}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+current\+\_\+state(void)}{get_current_state(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mstate\+\_\+t}$\ast$ get\+\_\+current\+\_\+state (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{state__machine_8h_a1e64df2eeaa6bb5823b5723a8feaa341}{}\label{state__machine_8h_a1e64df2eeaa6bb5823b5723a8feaa341}
+
+
+get\+\_\+current\+\_\+state Get the current machine state from the state machine 
+
+\begin{DoxyReturn}{Returns}
+Current machine state from the state machine 
+\end{DoxyReturn}
+\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!scroll\+\_\+\+Text@{scroll\+\_\+\+Text}}
+\index{scroll\+\_\+\+Text@{scroll\+\_\+\+Text}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}
+\subsubsection[{\texorpdfstring{scroll\+\_\+\+Text(void)}{scroll_Text(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void scroll\+\_\+\+Text (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{state__machine_8h_a6c15ed9ec59e864ffee5d50c5f1b9118}{}\label{state__machine_8h_a6c15ed9ec59e864ffee5d50c5f1b9118}
+\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!show\+\_\+temperature@{show\+\_\+temperature}}
+\index{show\+\_\+temperature@{show\+\_\+temperature}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}
+\subsubsection[{\texorpdfstring{show\+\_\+temperature(void)}{show_temperature(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void show\+\_\+temperature (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{state__machine_8h_a5fd9d0df63f9fc4e4f9392fcaa45f67b}{}\label{state__machine_8h_a5fd9d0df63f9fc4e4f9392fcaa45f67b}
+
+
+Shows current temperature in Celsius on the display. 
+
+\index{state\+\_\+machine.\+h@{state\+\_\+machine.\+h}!state\+\_\+machine\+\_\+change\+\_\+state@{state\+\_\+machine\+\_\+change\+\_\+state}}
+\index{state\+\_\+machine\+\_\+change\+\_\+state@{state\+\_\+machine\+\_\+change\+\_\+state}!state\+\_\+machine.\+h@{state\+\_\+machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+machine\+\_\+change\+\_\+state(event\+\_\+t event)}{state_machine_change_state(event_t event)}}]{\setlength{\rightskip}{0pt plus 5cm}void state\+\_\+machine\+\_\+change\+\_\+state (
+\begin{DoxyParamCaption}
+\item[{{\bf event\+\_\+t}}]{event}
+\end{DoxyParamCaption}
+)}\hypertarget{state__machine_8h_af0500e1eccc31b02cf60d7402e346cd2}{}\label{state__machine_8h_af0500e1eccc31b02cf60d7402e346cd2}
+
+
+scroll\+\_\+\+Text Shows \char`\"{}\+E\+C\+O\+M042.\+2017.\+2\char`\"{} scrolling in the display 
+

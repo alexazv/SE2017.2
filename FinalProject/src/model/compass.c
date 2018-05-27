@@ -7,22 +7,22 @@
 direction_t calculate_direction(compass_raw_data *data){
 
     printk("Compass: X = %d, ", data->axis.x);
-
     printk("Y = %d, ", data->axis.y);
-
-    printk("Z = %d\n", data->axis.z);
+    printk("Z = %d, ", data->axis.z);
 
     double_t x = data->axis.x;
     double_t y = data->axis.y;
 
-    double_t angle = x == 0? (y < 0 ? 90 : 0) : (atan(y/x)*180.0)/PI;
+    double_t angle = -(atan2(y, x)*180.0)/PI;
+
+    printk("angle = %d\n", (int)angle);
 
     if(angle < 0)
         angle = 360 + angle;
 
-    if(angle >= 337.25 || angle < 22.5)
+    if(angle >= 337.5 || angle < 22.5)
         return NORTH;
-    else if(angle >= 292.5 && angle < 337.25)
+    else if(angle >= 292.5 && angle < 337.5)
         return NORTHWEST;
     else if(angle >= 247.5 && angle < 292.5)
         return WEST;
@@ -34,10 +34,11 @@ direction_t calculate_direction(compass_raw_data *data){
         return SOUTHEAST;
     else if(angle >= 67.5 && angle < 112.5)
         return EAST;
-    else if(angle >= 0 && angle < 67.5)
+    else if(angle >= 22.5 && angle < 67.5)
         return NORTHTEAST;
     else
         return UNDEFINED;
+
 
 }
 
@@ -97,22 +98,13 @@ static struct mb_image * direction_sprites[] = {&north, &west, &south, &east,
                                         &north_west, &north_east,
                                          &south_west, &south_east, &undefined};
 
-/**
- * @brief compass_direction_sprite_get
- * Get the sprite for a cardinal direction to be shown on the display
- * @param direction - cardinal direction requested
- * @return
- */
 struct mb_display * compass_direction_sprite_get(direction_t direction){
 
     //printk("%d\n", direction);
     return direction_sprites[direction];
 }
 
-/**
- * @brief show_compass
- * Show current magnetic north direction on the display
- */
+
 void show_compass(void){
    compass_raw_data data;
    read_from_compass(data.data_raw);
