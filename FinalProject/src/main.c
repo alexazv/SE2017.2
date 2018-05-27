@@ -19,11 +19,6 @@ void buttonA_pressed(struct device *gpiob, struct gpio_callback *cb,
             u32_t pins)
 {
     state_machine_change_state(BUTTON_A);
-    /*ce = BUTTON_A;
-    event_changed = 1;
-    k_wakeup(k_current_get());
-    clear_display();*/
-    printk("Button A pressed\n");
 }
 /**
  * @brief buttonB_pressed
@@ -35,12 +30,7 @@ void buttonA_pressed(struct device *gpiob, struct gpio_callback *cb,
 void buttonB_pressed(struct device *gpiob, struct gpio_callback *cb,
             u32_t pins)
 {
-    ce = BUTTON_B;
     state_machine_change_state(BUTTON_B);
-    //event_changed = 1;
-    //k_wakeup(k_current_get());
-    //clear_display();
-    printk("Button B pressed\n");
 }
 
 int main(){

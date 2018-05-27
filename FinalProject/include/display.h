@@ -4,6 +4,8 @@
 #ifndef DISPLAY_FINALPROJECT_H
 #define DISPLAY_FINALPROJECT_H
 
+#define SCREEN_DURATION 300
+
 #include <zephyr.h>
 #include <misc/printk.h>
 #include <board.h>

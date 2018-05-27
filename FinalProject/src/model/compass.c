@@ -1,72 +1,9 @@
 ﻿#include "compass.h"
-
-#define COMPASS_DEV_ADDR     0x0e
-#define COMPASS_WHO_AM_I_REG 0x07
-#define COMPASS_TEST_VALUE   0xC4
+#include "i2c_device.h"
+#include "display.h"
 
 #define PI 3.141592654
 
-static struct i2c_dev compass;
-
-
-/**
- * @brief compass_init
- *
- * Configure the magnetometer device for use
- */
-void compass_init(void){
-    i2c_util_dev_init(&compass, COMPASS_DEV_ADDR, "COMPASS",
-                            COMPASS_WHO_AM_I_REG, COMPASS_TEST_VALUE);
-}
-
-//TODO: split in active/standby
-void compass_active(){
-
-}
-
-void configCompass(){
-    uint8_t config;
-
-    //standby
-    config = 0;
-    i2c_util_write_bytes(&compass, 0x10, &config, sizeof(config));
-
-    //continuous read
-    config = 0x80;
-    i2c_util_write_bytes(&compass, 0x11, &config, sizeof(config));
-
-    //wake
-    config = 0x01;
-    i2c_util_write_bytes(&compass, 0x10, &config, sizeof(config));
-}
-
-/**
- * @brief read_from_compass
- * Read the raw x, y and z values from the magnetometer device
- *
- * @param data - destination for the raw x, y, z data.
- */
-void read_from_compass(compass_raw_data * data){
-
-    configCompass();
-
-    i2c_util_read_bytes(&compass, 0x01, data->data_raw, sizeof(data));
-
-    /*for(int i = 0; i < 6; i+=2){
-        data->data_signed[i/2] = (raw_data[i] << 8) | raw_data[i+1];
-    }*/
-
-
-    printk("Compass: X = %d, ", data->axis.x);
-
-    printk("Y = %d, ", data->axis.y);
-
-    printk("Z = %d\n", data->axis.z);
-
-}
-
-
-//TODO: change to x, y, z
 direction_t calculate_direction(compass_raw_data *data){
 
     printk("Compass: X = %d, ", data->axis.x);
@@ -172,3 +109,21 @@ struct mb_display * compass_direction_sprite_get(direction_t direction){
     return direction_sprites[direction];
 }
 
+/**
+ * @brief show_compass
+ * Show current magnetic north direction on the display
+ */
+void show_compass(void){
+   compass_raw_data data;
+   read_from_compass(data.data_raw);
+
+   printk("Compass: X = %d, ", data.axis.x);
+
+   printk("Y = %d, ", data.axis.y);
+
+   printk("Z = %d\n", data.axis.z);
+
+   print_image_to_display(
+               compass_direction_sprite_get(calculate_direction(&data)));
+   k_sleep(100);
+}

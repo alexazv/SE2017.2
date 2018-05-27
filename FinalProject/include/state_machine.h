@@ -25,13 +25,9 @@ void state_machine_change_state(event_t event);
 
 void scroll_Text(void);
 
-void action(void);
+void bluetooth(void);
 
 void show_temperature(void);
-
-void show_accelerometer();
-
-void show_compass();
 
 mstate_t * get_current_state();
 

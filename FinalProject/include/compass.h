@@ -34,9 +34,7 @@ direction_t calculate_direction(compass_raw_data *data);
 
 struct mb_display * compass_direction_sprite_get(direction_t direction);
 
-void compass_init(void);
-
-void read_from_compass(compass_raw_data *data);
+void show_compass(void);
 
 #endif //COMPASS_FINALPROJECT_H
 
