@@ -1,3 +1,11 @@
+/**
+ *  @file    display.c
+ *  @author  Alexandre Azevedo
+ *  @date    27/05/2018
+ *
+ */
+
+
 #ifndef COMPASS_FINALPROJECT_H
 #define COMPASS_FINALPROJECT_H
 
@@ -28,7 +36,7 @@ typedef union {
     } axis;
     uint16_t data_signed[3];
     uint8_t data_raw[6];
-} compass_raw_data;
+} compass_raw_data_t;
 
 
 /**
@@ -43,14 +51,12 @@ typedef union {
  * @return
  * The calculated cardinal direction
  */
-direction_t calculate_direction(compass_raw_data *data);
+direction_t calculate_direction(compass_raw_data_t *data);
 
 /**
  * @brief show_compass
  * Show direction of magnetic north on the display
  */
-struct mb_display * compass_direction_sprite_get(direction_t direction);
-
 void show_compass(void);
 
 /**

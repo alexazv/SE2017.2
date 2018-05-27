@@ -1,6 +1,7 @@
 //Code by Alexandre Azevedo
 //Code created in 19/05/2018
 
+
 #ifndef THERMOMETER_FINALPROJECT_H
 #define THERMOMETER_FINALPROJECT_H
 

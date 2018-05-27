@@ -1,7 +1,19 @@
+/**
+ *  @file    display.c
+ *  @author  Alexandre Azevedo
+ *  @date    25/05/2018
+ *
+ */
+
 #ifndef STATE_MACHINE_FINALPROJECT_H
 #define STATE_MACHINE_FINALPROJECT_H
 
-typedef enum {
+typedef
+/**
+/** * @brief state_t
+ * Enum of possible device states
+/** */
+enum {
     TEXT_DISPLAY,
     ACCELEROMETER,
     COMPASS,
@@ -26,7 +38,7 @@ struct {
     const char * state_name;
     state_t events[2];
     void (*action)(void);
-} mstate_t;
+} state_machine_t;
 
 /**
  * @brief scroll_Text
@@ -51,6 +63,6 @@ void show_temperature(void);
  * @return
  * Current machine state from the state machine
  */
-mstate_t * get_current_state(void);
+state_machine_t * get_current_state(void);
 
 #endif //STATE_MACHINE_FINALPROJECT_H

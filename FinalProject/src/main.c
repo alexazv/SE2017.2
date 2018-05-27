@@ -19,6 +19,7 @@ void buttonA_pressed(struct device *gpiob, struct gpio_callback *cb,
             u32_t pins)
 {
     state_machine_change_state(BUTTON_A);
+
 }
 /**
  * @brief buttonB_pressed

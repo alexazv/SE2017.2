@@ -1,7 +1,8 @@
-/*
- * Copyright (c) 2017 Intel Corporation
+/**
+ *  @file    display.c
+ *  @author  Alexandre Azevedo
+ *  @date    25/05/2018
  *
- * SPDX-License-Identifier: Apache-2.0
  */
 
 #include "display.h"
@@ -38,10 +39,7 @@ void print_double_to_display(double number, int ms_duration)
 
     char text[10];
 
-    //int success =
-            snprintf(text, 10, "%d", (int)number);
-
-    //printk("%d\n", success);
+    snprintf(text, 10, "%.2f", number);
 
     mb_display_print(disp, MB_DISPLAY_MODE_DEFAULT | MB_DISPLAY_FLAG_LOOP,
              K_MSEC(ms_duration), text);
@@ -57,5 +55,4 @@ void print_image_to_display(const struct mb_image *img){
     disp = mb_display_get();
     mb_display_image(disp, MB_DISPLAY_MODE_SINGLE,
                          K_SECONDS(1), img, 1);
-        //k_sleep(K_SECONDS(1));
 }

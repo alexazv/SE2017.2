@@ -1,3 +1,11 @@
+/**
+ *  @file    display.c
+ *  @author  Alexandre Azevedo
+ *  @date    27/05/2018
+ *
+ */
+
+
 #include "state_machine.h"
 #include <stdint.h>
 
@@ -23,7 +31,7 @@ static state_t current_state = TEXT_DISPLAY;
 //static state_t cs = COMPASS;
 //static state_t cs = ACCELEROMETER;
 
-static mstate_t machine[] = {{.state_name = "Text Display", .events = {BLUETOOTH, ACCELEROMETER}, .action = scroll_Text},
+static state_machine_t machine[] = {{.state_name = "Text Display", .events = {BLUETOOTH, ACCELEROMETER}, .action = scroll_Text},
                        {.state_name = "Accelerometer", .events = {TEXT_DISPLAY, COMPASS}, .action = show_accelerometer},
                        {.state_name = "Compass", .events = {ACCELEROMETER, THERMOMETER}, .action = show_compass},
                        {.state_name = "Thermometer", .events = {COMPASS, BLUETOOTH}, .action = show_temperature},
@@ -38,24 +46,21 @@ void state_machine_change_state(event_t event){
 void scroll_Text(void){
     print_string_to_display("ECOM042.2017.2", SCREEN_DURATION);
     k_sleep(17*SCREEN_DURATION);
-
-    //print_string_to_display("AHN AHN FUCK THAT", SCREEN_DURATION+100);
-    //k_sleep(50*(SCREEN_DURATION+10));
 }
 
 void bluetooth(void){
     print_string_to_display("BLE", SCREEN_DURATION);
-    k_sleep(17*SCREEN_DURATION);
+    k_sleep(5*SCREEN_DURATION);
 }
 
 
 void show_temperature(void){
 
-    double temperature = thermometer_get_temperature_as_double();
-    print_double_to_display(temperature, SCREEN_DURATION);
+    uint8_t temperature = (uint8_t)thermometer_get_temperature_as_double();
+    print_int_to_display(temperature, SCREEN_DURATION);
     k_sleep(6*SCREEN_DURATION);
 }
 
-mstate_t * get_current_state(void){
+state_machine_t * get_current_state(void){
      return &machine[current_state];
 }

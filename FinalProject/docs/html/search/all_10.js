@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y',['y',['../unionaccelerometer__raw__data.html#a4fd1e05861d56ec35b0562563d70e15f',1,'accelerometer_raw_data::y()'],['../unioncompass__raw__data.html#ab07fdca20a54692df8ff314d573c4313',1,'compass_raw_data::y()']]]
+  ['z',['z',['../unionaccelerometer__raw__data__t.html#a86a93d9e4affc3dc0156eff12dc29c30',1,'accelerometer_raw_data_t::z()'],['../unioncompass__raw__data__t.html#a17996b57c24f32c439ec4ef9b1ab6e69',1,'compass_raw_data_t::z()']]]
 ];

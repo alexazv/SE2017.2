@@ -1,3 +1,11 @@
+/**
+ *  @file    display.c
+ *  @author  Alexandre Azevedo
+ *  @date    27/05/2018
+ *
+ */
+
+
 #ifndef ACCELEROMETER_FINALPROJECT_H
 #define ACCELEROMETER_H
 
@@ -38,7 +46,7 @@ typedef union {
      * as it is read from the device
      */
     uint8_t data_raw[6];
-} accelerometer_raw_data;
+} accelerometer_raw_data_t;
 
 /**
  * @brief calculate_tilt
@@ -47,7 +55,7 @@ typedef union {
  * @param y_raw - raw y value
  * @param z_raw - raw z value
  */
-static void calculate_tilt(accelerometer_raw_data * data);
+static void calculate_tilt(accelerometer_raw_data_t * data);
 
 /**
  * @brief print_tilt

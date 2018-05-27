@@ -16,7 +16,7 @@ Include dependency graph for compass.\+h\+:\nopagebreak
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-union \hyperlink{unioncompass__raw__data}{compass\+\_\+raw\+\_\+data}
+union \hyperlink{unioncompass__raw__data__t}{compass\+\_\+raw\+\_\+data\+\_\+t}
 \end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -38,12 +38,12 @@ enum \hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b}{direction\+\_\+t} 
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b}{direction\+\_\+t} \hyperlink{compass_8h_aabffb9e361e4da72065bf5cb2b8e231e}{calculate\+\_\+direction} (\hyperlink{unioncompass__raw__data}{compass\+\_\+raw\+\_\+data} $\ast$data)
+\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b}{direction\+\_\+t} \hyperlink{compass_8h_a709e55d460e36e7126d379ebf2080c22}{calculate\+\_\+direction} (\hyperlink{unioncompass__raw__data__t}{compass\+\_\+raw\+\_\+data\+\_\+t} $\ast$data)
 \begin{DoxyCompactList}\small\item\em calculate\+\_\+direction \end{DoxyCompactList}\item 
-struct mb\+\_\+display $\ast$ \hyperlink{compass_8h_a146211ca0118be8477f48c6232de7f1b}{compass\+\_\+direction\+\_\+sprite\+\_\+get} (\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b}{direction\+\_\+t} direction)
-\begin{DoxyCompactList}\small\item\em show\+\_\+compass Show direction of magnetic north on the display \end{DoxyCompactList}\item 
 void \hyperlink{compass_8h_ae937ab674d54bc076783f8206002be7f}{show\+\_\+compass} (void)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em show\+\_\+compass Show direction of magnetic north on the display \end{DoxyCompactList}\item 
+struct mb\+\_\+display $\ast$ \hyperlink{compass_8h_a0fc6682575beba29c58f3b86289c35c8}{compass\+\_\+direction\+\_\+sprite\+\_\+get} (\hyperlink{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b}{direction\+\_\+t} direction)
+\begin{DoxyCompactList}\small\item\em compass\+\_\+direction\+\_\+sprite\+\_\+get Get the sprite for a cardinal direction to be shown on the display \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Enumeration Type Documentation}
@@ -78,11 +78,11 @@ U\+N\+D\+E\+F\+I\+N\+ED\hypertarget{compass_8h_ae9ae980041e438eed7a3af43ce4e9f6b
 \subsection{Function Documentation}
 \index{compass.\+h@{compass.\+h}!calculate\+\_\+direction@{calculate\+\_\+direction}}
 \index{calculate\+\_\+direction@{calculate\+\_\+direction}!compass.\+h@{compass.\+h}}
-\subsubsection[{\texorpdfstring{calculate\+\_\+direction(compass\+\_\+raw\+\_\+data $\ast$data)}{calculate_direction(compass_raw_data *data)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf direction\+\_\+t} calculate\+\_\+direction (
+\subsubsection[{\texorpdfstring{calculate\+\_\+direction(compass\+\_\+raw\+\_\+data\+\_\+t $\ast$data)}{calculate_direction(compass_raw_data_t *data)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf direction\+\_\+t} calculate\+\_\+direction (
 \begin{DoxyParamCaption}
-\item[{{\bf compass\+\_\+raw\+\_\+data} $\ast$}]{data}
+\item[{{\bf compass\+\_\+raw\+\_\+data\+\_\+t} $\ast$}]{data}
 \end{DoxyParamCaption}
-)}\hypertarget{compass_8h_aabffb9e361e4da72065bf5cb2b8e231e}{}\label{compass_8h_aabffb9e361e4da72065bf5cb2b8e231e}
+)}\hypertarget{compass_8h_a709e55d460e36e7126d379ebf2080c22}{}\label{compass_8h_a709e55d460e36e7126d379ebf2080c22}
 
 
 calculate\+\_\+direction 
@@ -99,16 +99,14 @@ The calculated cardinal direction
 \end{DoxyReturn}
 \index{compass.\+h@{compass.\+h}!compass\+\_\+direction\+\_\+sprite\+\_\+get@{compass\+\_\+direction\+\_\+sprite\+\_\+get}}
 \index{compass\+\_\+direction\+\_\+sprite\+\_\+get@{compass\+\_\+direction\+\_\+sprite\+\_\+get}!compass.\+h@{compass.\+h}}
-\subsubsection[{\texorpdfstring{compass\+\_\+direction\+\_\+sprite\+\_\+get(direction\+\_\+t direction)}{compass_direction_sprite_get(direction_t direction)}}]{\setlength{\rightskip}{0pt plus 5cm}struct mb\+\_\+display $\ast$ compass\+\_\+direction\+\_\+sprite\+\_\+get (
+\subsubsection[{\texorpdfstring{compass\+\_\+direction\+\_\+sprite\+\_\+get(direction\+\_\+t direction)}{compass_direction_sprite_get(direction_t direction)}}]{\setlength{\rightskip}{0pt plus 5cm}struct mb\+\_\+display$\ast$ compass\+\_\+direction\+\_\+sprite\+\_\+get (
 \begin{DoxyParamCaption}
 \item[{{\bf direction\+\_\+t}}]{direction}
 \end{DoxyParamCaption}
-)}\hypertarget{compass_8h_a146211ca0118be8477f48c6232de7f1b}{}\label{compass_8h_a146211ca0118be8477f48c6232de7f1b}
+)}\hypertarget{compass_8h_a0fc6682575beba29c58f3b86289c35c8}{}\label{compass_8h_a0fc6682575beba29c58f3b86289c35c8}
 
 
-show\+\_\+compass Show direction of magnetic north on the display 
-
-compass\+\_\+direction\+\_\+sprite\+\_\+get Get the sprite for a cardinal direction to be shown on the display
+compass\+\_\+direction\+\_\+sprite\+\_\+get Get the sprite for a cardinal direction to be shown on the display 
 
 
 \begin{DoxyParams}{Parameters}
@@ -125,3 +123,7 @@ Sprite for the cardinal direction
 \item[{void}]{}
 \end{DoxyParamCaption}
 )}\hypertarget{compass_8h_ae937ab674d54bc076783f8206002be7f}{}\label{compass_8h_ae937ab674d54bc076783f8206002be7f}
+
+
+show\+\_\+compass Show direction of magnetic north on the display 
+

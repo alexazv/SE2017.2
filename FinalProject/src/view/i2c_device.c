@@ -1,3 +1,10 @@
+/**
+ *  @file    display.c
+ *  @author  Alexandre Azevedo
+ *  @date    27/05/2018
+ *
+ */
+
 #define ACC_DEV_ADDR     0x1D
 #define ACC_WHO_AM_I_REG 0x0D
 #define ACC_TEST_VALUE   0x5A

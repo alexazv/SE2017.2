@@ -1,10 +1,18 @@
-﻿#include "compass.h"
+﻿/**
+ *  @file    display.c
+ *  @author  Alexandre Azevedo
+ *  @date    27/05/2018
+ *
+ */
+
+
+#include "compass.h"
 #include "i2c_device.h"
 #include "display.h"
 
 #define PI 3.141592654
 
-direction_t calculate_direction(compass_raw_data *data){
+direction_t calculate_direction(compass_raw_data_t *data){
 
     printk("Compass: X = %d, ", data->axis.x);
     printk("Y = %d, ", data->axis.y);
@@ -106,7 +114,7 @@ struct mb_display * compass_direction_sprite_get(direction_t direction){
 
 
 void show_compass(void){
-   compass_raw_data data;
+   compass_raw_data_t data;
    read_from_compass(data.data_raw);
 
    printk("Compass: X = %d, ", data.axis.x);
