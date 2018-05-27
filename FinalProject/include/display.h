@@ -9,7 +9,6 @@
 #include <board.h>
 #include <gpio.h>
 #include <device.h>
-
 #include <display/mb_display.h>
 
 void print_string_to_display(const char * text, int ms_duration);

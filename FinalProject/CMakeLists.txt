@@ -22,13 +22,17 @@ include_directories(
 
 list(APPEND SOURCES
    "${PROJECT_SOURCE_DIR}/src/main.c"
-  "${PROJECT_SOURCE_DIR}/src/display.c"
-  "${PROJECT_SOURCE_DIR}/src/thermometer.c"
-   "${PROJECT_SOURCE_DIR}/src/button.c"
-   #"${PROJECT_SOURCE_DIR}/src/i2c_driver.c"
-    "${PROJECT_SOURCE_DIR}/src/i2c_util.c"
-"${PROJECT_SOURCE_DIR}/src/accelerometer.c"
-    "${PROJECT_SOURCE_DIR}/src/compass.c"
+  "${PROJECT_SOURCE_DIR}/src/view/display.c"
+  "${PROJECT_SOURCE_DIR}/src/controller/thermometer.c"
+   "${PROJECT_SOURCE_DIR}/src/controller/button.c"
+    "${PROJECT_SOURCE_DIR}/src/controller/i2c_util.c"
+"${PROJECT_SOURCE_DIR}/src/controller/accelerometer.c"
+#"${PROJECT_SOURCE_DIR}/src/controller/bas.c"
+#"${PROJECT_SOURCE_DIR}/src/controller/dis.c"
+#"${PROJECT_SOURCE_DIR}/src/controller/bluetooth.c"
+#"${PROJECT_SOURCE_DIR}/src/controller/bluetooth_hci_usart.c"
+    "${PROJECT_SOURCE_DIR}/src/controller/compass.c"
+"${PROJECT_SOURCE_DIR}/src/model/state_machine.c"
  )
 
 

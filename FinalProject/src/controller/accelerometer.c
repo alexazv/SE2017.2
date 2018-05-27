@@ -16,7 +16,12 @@ static struct mb_image map  = MB_IMAGE({ 0, 0, 0, 0, 0 },
                                     { 0, 0, 0, 0, 0 },
                                     { 0, 0, 0, 0, 0 },
                                     { 0, 0, 0, 0, 0 });
-void accelerometer_init(){
+/**
+ * @brief accelerometer_init
+ *
+ * Configure the accelerometer device for use
+ */
+void accelerometer_init(void){
     i2c_util_dev_init(&acc, ACC_DEV_ADDR, "ACC", ACC_WHO_AM_I_REG,
                             ACC_TEST_VALUE);
 
@@ -33,7 +38,12 @@ void accelerometer_init(){
     accelerometer_active();
 }
 
-void accelerometer_standby(){
+/**
+ * @brief accelerometer_standby
+ *
+ * Change accelerometer device status to "standby"
+ */
+void accelerometer_standby(void){
     uint8_t config;
     //clear active bit
     config = 0x00;
@@ -41,7 +51,11 @@ void accelerometer_standby(){
 
 }
 
-void accelerometer_active(){
+/**
+ * @brief accelerometer_active
+ * Change accelerometer device status to active
+ */
+void accelerometer_active(void){
     uint8_t config;
     //read from CTRL1
     //i2c_util_read_bytes(&acc, 0x2A, config, 1);
@@ -52,7 +66,11 @@ void accelerometer_active(){
 }
 
 
-
+/**
+ * @brief read_from_accelerometer
+ * Read the raw x, y and z values from the accelerometer device
+ * @param dst - destination of the x, y, z data. Must be an array at least 3 bytes long
+ */
 void read_from_accelerometer(int16_t *dst){
     static uint8_t data[6];
 
@@ -74,13 +92,20 @@ void read_from_accelerometer(int16_t *dst){
 
 }
 
-void calculate_tilt(int16_t x, int16_t y, int16_t z){
+/**
+ * @brief calculate_tilt
+ * Calculate roll and pitch of the device in degrees based on raw values
+ * @param x_raw - raw x value
+ * @param y_raw - raw y value
+ * @param z_raw - raw z value
+ */
+void calculate_tilt(int16_t x_raw, int16_t y_raw, int16_t z_raw){
 
     //printk("x = %d, y = %d, z = %d\n", x, y, z);
 
-      double_t x_g = ((double_t) x)*0.0038;
-      double_t y_g = ((double_t) y)*0.0038;
-      double_t z_g = ((double_t )z)*0.0038;
+      double_t x_g = ((double_t) x_raw)*0.0038;
+      double_t y_g = ((double_t) y_raw)*0.0038;
+      double_t z_g = ((double_t)z_raw)*0.0038;
 
       //double_t roll = atan(y_g/z_g) * 180.0/PI;
       double_t roll = atan(y_g/sqrt((x_g * x_g) + (z_g * z_g))) * 180.0/PI;
@@ -91,25 +116,32 @@ void calculate_tilt(int16_t x, int16_t y, int16_t z){
       print_tilt(roll, pitch);
 }
 
+
+/**
+ * @brief print_tilt
+ * Show current tilt as a pixel on the display
+ * @param roll - roll of device
+ * @param pitch - pitch of the device
+ */
 void print_tilt(double_t roll, double_t pitch){
 
     //positioned center of center
-    int x, y;
+    int column, row;
 
     if(roll <= MIN){
-        y = 2;
-    } else if(MIN < roll && roll <= MIDDLE){
-        y = 4;
+        row = 2;
+    } else if(MIN < roll && roll < MIDDLE){
+        row = 4;
     } else{
-        y = 0;
+        row = 0;
     }
 
     if(pitch <= MIN){
-        x = 2;
-    } else if(MIN < pitch && pitch <= MIDDLE){
-        x = 4;
+        column = 2;
+    } else if(MIN < pitch && pitch < MIDDLE){
+        column = 4;
     } else{
-        x = 0;
+        column = 0;
     }
 
 
@@ -147,9 +179,9 @@ void print_tilt(double_t roll, double_t pitch){
             y = 0;
     }*/
 
-    map.row[y] = (1 << x);
+    map.row[row] = (1 << column);
 
     print_image_to_display(&map);
 
-    map.row[y] = 0;
+    map.row[row] = 0;
 }

@@ -1,4 +1,4 @@
-#include "compass.h"
+﻿#include "compass.h"
 
 #define COMPASS_DEV_ADDR     0x0e
 #define COMPASS_WHO_AM_I_REG 0x07
@@ -8,11 +8,18 @@
 
 static struct i2c_dev compass;
 
-void compass_init(){
+
+/**
+ * @brief compass_init
+ *
+ * Configure the magnetometer device for use
+ */
+void compass_init(void){
     i2c_util_dev_init(&compass, COMPASS_DEV_ADDR, "COMPASS",
                             COMPASS_WHO_AM_I_REG, COMPASS_TEST_VALUE);
 }
 
+//TODO: split in active/standby
 void compass_active(){
 
 }
@@ -25,7 +32,7 @@ void configCompass(){
     i2c_util_write_bytes(&compass, 0x10, &config, sizeof(config));
 
     //continuous read
-    config = config =  0x80;
+    config = 0x80;
     i2c_util_write_bytes(&compass, 0x11, &config, sizeof(config));
 
     //wake
@@ -33,28 +40,43 @@ void configCompass(){
     i2c_util_write_bytes(&compass, 0x10, &config, sizeof(config));
 }
 
-//dst must have at least 3 bytes
-void read_from_compass(int16_t *dst){
-    static uint8_t data[6];
+/**
+ * @brief read_from_compass
+ * Read the raw x, y and z values from the magnetometer device
+ *
+ * @param data - destination for the raw x, y, z data.
+ */
+void read_from_compass(compass_raw_data * data){
 
     configCompass();
 
-    i2c_util_read_bytes(&compass, 0x01, data, sizeof(data));
+    i2c_util_read_bytes(&compass, 0x01, data->data_raw, sizeof(data));
 
-    for(int i = 0; i < 6; i+=2){
-        dst[i/2] = (data[i] << 8) | data[i+1];
-    }
+    /*for(int i = 0; i < 6; i+=2){
+        data->data_signed[i/2] = (raw_data[i] << 8) | raw_data[i+1];
+    }*/
 
-    printk("Compass: X = %d, ", dst[0]);
 
-    printk("Y = %d, ", dst[1]);
+    printk("Compass: X = %d, ", data->axis.x);
 
-    printk("Z = %d\n", dst[2]);
+    printk("Y = %d, ", data->axis.y);
+
+    printk("Z = %d\n", data->axis.z);
+
 }
 
-direction_t calculate_direction(int16_t * data){
-    double_t x = data[0];
-    double_t y = data[1];
+
+//TODO: change to x, y, z
+direction_t calculate_direction(compass_raw_data *data){
+
+    printk("Compass: X = %d, ", data->axis.x);
+
+    printk("Y = %d, ", data->axis.y);
+
+    printk("Z = %d\n", data->axis.z);
+
+    double_t x = data->axis.x;
+    double_t y = data->axis.y;
 
     double_t angle = x == 0? (y < 0 ? 90 : 0) : (atan(y/x)*180.0)/PI;
 
@@ -138,7 +160,13 @@ static struct mb_image * direction_sprites[] = {&north, &west, &south, &east,
                                         &north_west, &north_east,
                                          &south_west, &south_east, &undefined};
 
-struct mb_display * direction_sprite(direction_t direction){
+/**
+ * @brief compass_direction_sprite_get
+ * Get the sprite for a cardinal direction to be shown on the display
+ * @param direction - cardinal direction requested
+ * @return
+ */
+struct mb_display * compass_direction_sprite_get(direction_t direction){
 
     //printk("%d\n", direction);
     return direction_sprites[direction];

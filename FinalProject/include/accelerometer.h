@@ -7,10 +7,16 @@
 #include <math.h>
 #include "display.h"
 
-void accelerometer_init();
-void accelerometer_standby();
-void accelerometer_active();
-void calculate_tilt(int16_t x, int16_t y, int16_t z);
+typedef struct accelerometer_data{
+    int16_t x;
+    int16_t y;
+    int16_t z;
+}accelerometer_raw_data;
+
+void accelerometer_init(void);
+void accelerometer_standby(void);
+void accelerometer_active(void);
+void calculate_tilt(int16_t x_raw, int16_t y_raw, int16_t z_raw);
 void read_from_accelerometer(int16_t * dst);
 
 

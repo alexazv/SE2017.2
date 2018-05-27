@@ -8,6 +8,6 @@
 #include <sensor.h>
 #include <stdio.h>
 
-double get_temperature_as_double();
+double thermometer_get_temperature_as_double(void);
 
 #endif //THERMOMETER_FINALPROJECT_H

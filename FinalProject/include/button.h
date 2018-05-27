@@ -85,7 +85,7 @@ void button_A_set_callback(gpio_callback_handler_t callback);
 
 void button_B_set_callback(gpio_callback_handler_t callback);
 
-void button_configure();
+void button_configure_init(void);
 
 
 #endif //DISPLAY_FINALPROJECT_H

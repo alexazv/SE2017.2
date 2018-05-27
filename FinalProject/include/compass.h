@@ -20,13 +20,23 @@ typedef enum {
     UNDEFINED
 } direction_t;
 
-direction_t calculate_direction(int16_t *data);
+typedef union {
+    struct {
+        int16_t x;
+        int16_t y;
+        int16_t z;
+    } axis;
+    uint16_t data_signed[3];
+    uint8_t data_raw[6];
+} compass_raw_data;
 
-struct mb_display * direction_sprite(direction_t direction);
+direction_t calculate_direction(compass_raw_data *data);
 
-void compass_init();
+struct mb_display * compass_direction_sprite_get(direction_t direction);
 
-void read_from_compass(int16_t *dst);
+void compass_init(void);
+
+void read_from_compass(compass_raw_data *data);
 
 #endif //COMPASS_FINALPROJECT_H
 
