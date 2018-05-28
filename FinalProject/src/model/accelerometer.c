@@ -9,8 +9,6 @@
 
 #define PI 3.141592654
 
-#define MIDDLE_RANGE 15
-
 static struct mb_image map  = MB_IMAGE({ 0, 0, 0, 0, 0 },
                                         { 0, 0, 0, 0, 0 },
                                         { 0, 0, 0, 0, 0 },
@@ -24,7 +22,7 @@ void calculate_tilt(accelerometer_raw_data_t *data){
     double_t y_g = (double_t) (data->axis.y);
     double_t z_g = (double_t) (data->axis.z);
 
-    double_t roll = (atan2(y_g, (z_g >= 0 ? 1 : -1)*sqrt((x_g * x_g) + (z_g * z_g))) * 180.0)/PI;
+    double_t roll = (atan2(y_g, sqrt((x_g * x_g) + (z_g * z_g))) * 180.0)/PI;
     double_t pitch = (atan2(x_g, sqrt((y_g * y_g) + (z_g * z_g))) * 180.0)/PI;
 
     printk("pitch = %d, roll = %d\n", (int)pitch, (int)roll);
