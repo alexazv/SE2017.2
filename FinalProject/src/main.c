@@ -1,8 +1,14 @@
-//Code created by Alexandre Azevedo
-//18/05/2018
+/**
+ *  @file    main.c
+ *  @author  Alexandre Azevedo
+ *  @date    18/05/2018
+ *
+ */
 
 #include "button.h"
 #include "state_machine.h"
+#include "version.h"
+#include <logging/sys_log.h>
 
 static event_t ce;
 volatile static int event_changed;
@@ -36,8 +42,8 @@ void buttonB_pressed(struct device *gpiob, struct gpio_callback *cb,
 
 int main(){
 
-   /*SYS_LOG_WRN("Firmware version: v%d.%d.%d",
-                   VERSION_MAJOR, VERSION_MINOR, VERSION_BUILD);*/
+  SYS_LOG_WRN("Firmware version: v%d.%d.%d",
+                   VERSION_MAJOR, VERSION_MINOR, VERSION_BUILD);
 
     button_configure_init();
     button_A_set_callback(buttonA_pressed);

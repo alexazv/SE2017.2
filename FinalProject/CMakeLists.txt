@@ -14,6 +14,7 @@ project(FinalProject)
 include(build.version.cmake NO_POLICY_SCOPE)
 
 include_directories(
+    "${PROJECT_BINARY_DIR}/include/generated"
     "${PROJECT_SOURCE_DIR}/include"
      "$ENV{ZEPHYR_BASE}/include"
     )
