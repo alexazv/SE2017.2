@@ -20,9 +20,9 @@ static struct mb_image map  = MB_IMAGE({ 0, 0, 0, 0, 0 },
 
 void calculate_tilt(accelerometer_raw_data_t *data){
 
-    double_t x_g = (double_t) (data->axis.x);//-1000.0;
-    double_t y_g = (double_t) (data->axis.y);//-35.0;
-    double_t z_g = (double_t) (data->axis.z);//-700.0;
+    double_t x_g = (double_t) (data->axis.x);
+    double_t y_g = (double_t) (data->axis.y);
+    double_t z_g = (double_t) (data->axis.z);
 
     double_t roll = (atan2(y_g, (z_g >= 0 ? 1 : -1)*sqrt((x_g * x_g) + (z_g * z_g))) * 180.0)/PI;
     double_t pitch = (atan2(x_g, sqrt((y_g * y_g) + (z_g * z_g))) * 180.0)/PI;
